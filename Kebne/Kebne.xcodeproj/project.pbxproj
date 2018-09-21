@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		518A29C12155148F00E02A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C02155148F00E02A5F /* AppDelegate.swift */; };
+		518A29C32155148F00E02A5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C22155148F00E02A5F /* ViewController.swift */; };
+		518A29C62155148F00E02A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518A29C42155148F00E02A5F /* Main.storyboard */; };
+		518A29C82155149100E02A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 518A29C72155149100E02A5F /* Assets.xcassets */; };
+		518A29CB2155149100E02A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518A29C92155149100E02A5F /* LaunchScreen.storyboard */; };
+		518A29D62155149100E02A5F /* KebneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29D52155149100E02A5F /* KebneTests.swift */; };
+		518A29E12155149100E02A5F /* KebneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29E02155149100E02A5F /* KebneUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		518A29D22155149100E02A5F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 518A29B52155148F00E02A5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 518A29BC2155148F00E02A5F;
+			remoteInfo = Kebne;
+		};
+		518A29DD2155149100E02A5F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 518A29B52155148F00E02A5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 518A29BC2155148F00E02A5F;
+			remoteInfo = Kebne;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		518A29BD2155148F00E02A5F /* Kebne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kebne.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		518A29C02155148F00E02A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		518A29C22155148F00E02A5F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		518A29C52155148F00E02A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		518A29C72155149100E02A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		518A29CA2155149100E02A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		518A29CC2155149100E02A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		518A29D12155149100E02A5F /* KebneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KebneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		518A29D52155149100E02A5F /* KebneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebneTests.swift; sourceTree = "<group>"; };
+		518A29D72155149100E02A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		518A29DC2155149100E02A5F /* KebneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KebneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		518A29E02155149100E02A5F /* KebneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebneUITests.swift; sourceTree = "<group>"; };
+		518A29E22155149100E02A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		518A29BA2155148F00E02A5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		518A29CE2155149100E02A5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		518A29D92155149100E02A5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		518A29B42155148F00E02A5F = {
+			isa = PBXGroup;
+			children = (
+				518A29BF2155148F00E02A5F /* Kebne */,
+				518A29D42155149100E02A5F /* KebneTests */,
+				518A29DF2155149100E02A5F /* KebneUITests */,
+				518A29BE2155148F00E02A5F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		518A29BE2155148F00E02A5F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				518A29BD2155148F00E02A5F /* Kebne.app */,
+				518A29D12155149100E02A5F /* KebneTests.xctest */,
+				518A29DC2155149100E02A5F /* KebneUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		518A29BF2155148F00E02A5F /* Kebne */ = {
+			isa = PBXGroup;
+			children = (
+				518A29C02155148F00E02A5F /* AppDelegate.swift */,
+				518A29C22155148F00E02A5F /* ViewController.swift */,
+				518A29C42155148F00E02A5F /* Main.storyboard */,
+				518A29C72155149100E02A5F /* Assets.xcassets */,
+				518A29C92155149100E02A5F /* LaunchScreen.storyboard */,
+				518A29CC2155149100E02A5F /* Info.plist */,
+			);
+			path = Kebne;
+			sourceTree = "<group>";
+		};
+		518A29D42155149100E02A5F /* KebneTests */ = {
+			isa = PBXGroup;
+			children = (
+				518A29D52155149100E02A5F /* KebneTests.swift */,
+				518A29D72155149100E02A5F /* Info.plist */,
+			);
+			path = KebneTests;
+			sourceTree = "<group>";
+		};
+		518A29DF2155149100E02A5F /* KebneUITests */ = {
+			isa = PBXGroup;
+			children = (
+				518A29E02155149100E02A5F /* KebneUITests.swift */,
+				518A29E22155149100E02A5F /* Info.plist */,
+			);
+			path = KebneUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		518A29BC2155148F00E02A5F /* Kebne */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 518A29E52155149100E02A5F /* Build configuration list for PBXNativeTarget "Kebne" */;
+			buildPhases = (
+				518A29B92155148F00E02A5F /* Sources */,
+				518A29BA2155148F00E02A5F /* Frameworks */,
+				518A29BB2155148F00E02A5F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kebne;
+			productName = Kebne;
+			productReference = 518A29BD2155148F00E02A5F /* Kebne.app */;
+			productType = "com.apple.product-type.application";
+		};
+		518A29D02155149100E02A5F /* KebneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 518A29E82155149100E02A5F /* Build configuration list for PBXNativeTarget "KebneTests" */;
+			buildPhases = (
+				518A29CD2155149100E02A5F /* Sources */,
+				518A29CE2155149100E02A5F /* Frameworks */,
+				518A29CF2155149100E02A5F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				518A29D32155149100E02A5F /* PBXTargetDependency */,
+			);
+			name = KebneTests;
+			productName = KebneTests;
+			productReference = 518A29D12155149100E02A5F /* KebneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		518A29DB2155149100E02A5F /* KebneUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 518A29EB2155149100E02A5F /* Build configuration list for PBXNativeTarget "KebneUITests" */;
+			buildPhases = (
+				518A29D82155149100E02A5F /* Sources */,
+				518A29D92155149100E02A5F /* Frameworks */,
+				518A29DA2155149100E02A5F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				518A29DE2155149100E02A5F /* PBXTargetDependency */,
+			);
+			name = KebneUITests;
+			productName = KebneUITests;
+			productReference = 518A29DC2155149100E02A5F /* KebneUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		518A29B52155148F00E02A5F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Emil Lundgren";
+				TargetAttributes = {
+					518A29BC2155148F00E02A5F = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					518A29D02155149100E02A5F = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 518A29BC2155148F00E02A5F;
+					};
+					518A29DB2155149100E02A5F = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 518A29BC2155148F00E02A5F;
+					};
+				};
+			};
+			buildConfigurationList = 518A29B82155148F00E02A5F /* Build configuration list for PBXProject "Kebne" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 518A29B42155148F00E02A5F;
+			productRefGroup = 518A29BE2155148F00E02A5F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				518A29BC2155148F00E02A5F /* Kebne */,
+				518A29D02155149100E02A5F /* KebneTests */,
+				518A29DB2155149100E02A5F /* KebneUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		518A29BB2155148F00E02A5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				518A29CB2155149100E02A5F /* LaunchScreen.storyboard in Resources */,
+				518A29C82155149100E02A5F /* Assets.xcassets in Resources */,
+				518A29C62155148F00E02A5F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		518A29CF2155149100E02A5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		518A29DA2155149100E02A5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		518A29B92155148F00E02A5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				518A29C32155148F00E02A5F /* ViewController.swift in Sources */,
+				518A29C12155148F00E02A5F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		518A29CD2155149100E02A5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				518A29D62155149100E02A5F /* KebneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		518A29D82155149100E02A5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				518A29E12155149100E02A5F /* KebneUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		518A29D32155149100E02A5F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 518A29BC2155148F00E02A5F /* Kebne */;
+			targetProxy = 518A29D22155149100E02A5F /* PBXContainerItemProxy */;
+		};
+		518A29DE2155149100E02A5F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 518A29BC2155148F00E02A5F /* Kebne */;
+			targetProxy = 518A29DD2155149100E02A5F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		518A29C42155148F00E02A5F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				518A29C52155148F00E02A5F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		518A29C92155149100E02A5F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				518A29CA2155149100E02A5F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		518A29E32155149100E02A5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		518A29E42155149100E02A5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		518A29E62155149100E02A5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMHM979XZR;
+				INFOPLIST_FILE = Kebne/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kebne.Kebne;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		518A29E72155149100E02A5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMHM979XZR;
+				INFOPLIST_FILE = Kebne/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kebne.Kebne;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		518A29E92155149100E02A5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMHM979XZR;
+				INFOPLIST_FILE = KebneTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kebne.KebneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kebne.app/Kebne";
+			};
+			name = Debug;
+		};
+		518A29EA2155149100E02A5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMHM979XZR;
+				INFOPLIST_FILE = KebneTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kebne.KebneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kebne.app/Kebne";
+			};
+			name = Release;
+		};
+		518A29EC2155149100E02A5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMHM979XZR;
+				INFOPLIST_FILE = KebneUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kebne.KebneUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kebne;
+			};
+			name = Debug;
+		};
+		518A29ED2155149100E02A5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMHM979XZR;
+				INFOPLIST_FILE = KebneUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kebne.KebneUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kebne;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		518A29B82155148F00E02A5F /* Build configuration list for PBXProject "Kebne" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				518A29E32155149100E02A5F /* Debug */,
+				518A29E42155149100E02A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		518A29E52155149100E02A5F /* Build configuration list for PBXNativeTarget "Kebne" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				518A29E62155149100E02A5F /* Debug */,
+				518A29E72155149100E02A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		518A29E82155149100E02A5F /* Build configuration list for PBXNativeTarget "KebneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				518A29E92155149100E02A5F /* Debug */,
+				518A29EA2155149100E02A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		518A29EB2155149100E02A5F /* Build configuration list for PBXNativeTarget "KebneUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				518A29EC2155149100E02A5F /* Debug */,
+				518A29ED2155149100E02A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 518A29B52155148F00E02A5F /* Project object */;
+}
