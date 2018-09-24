@@ -18,6 +18,7 @@
 		518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F02158D4AC00E02A5F /* MainCoordinator.swift */; };
 		518A29F32158E45A00E02A5F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F22158E45A00E02A5F /* UserController.swift */; };
 		518A29F52158E47300E02A5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F42158E47300E02A5F /* User.swift */; };
+		51E74A6421590A820037153D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E74A6321590A820037153D /* Environment.swift */; };
 		70873D6F55D10EA247F0ACA1 /* libPods-Kebne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		518A29F02158D4AC00E02A5F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		518A29F22158E45A00E02A5F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		518A29F42158E47300E02A5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		51E74A6321590A820037153D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9C891FB7F4182A6B059FFEC1 /* Pods-Kebne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kebne.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kebne/Pods-Kebne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 				518A29F02158D4AC00E02A5F /* MainCoordinator.swift */,
 				518A29F22158E45A00E02A5F /* UserController.swift */,
 				518A29F42158E47300E02A5F /* User.swift */,
+				51E74A6321590A820037153D /* Environment.swift */,
 			);
 			path = Kebne;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				518A29F32158E45A00E02A5F /* UserController.swift in Sources */,
 				518A29C32155148F00E02A5F /* MainViewController.swift in Sources */,
 				518A29F52158E47300E02A5F /* User.swift in Sources */,
+				51E74A6421590A820037153D /* Environment.swift in Sources */,
 				518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */,
 				518A29C12155148F00E02A5F /* AppDelegate.swift in Sources */,
 				518A29EF2158D3D700E02A5F /* SignInViewController.swift in Sources */,
@@ -525,13 +529,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZMHM979XZR;
+				DEVELOPMENT_TEAM = 2TLM57CUQ3;
 				INFOPLIST_FILE = Kebne/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kebne.Kebne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kebne.Kebneapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -544,13 +549,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZMHM979XZR;
+				DEVELOPMENT_TEAM = 2TLM57CUQ3;
 				INFOPLIST_FILE = Kebne/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kebne.Kebne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kebne.Kebneapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

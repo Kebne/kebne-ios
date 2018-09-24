@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GoogleSignIn
 
 
 
@@ -31,10 +32,11 @@ protocol Coordinator {
     func start()
 }
 
-class MainCoordinator : Coordinator {
+class MainCoordinator : NSObject, Coordinator {
     
     var rootViewController: UINavigationController
     var userController: UserController!
+    
     
     init(rootViewController: UINavigationController, userController: UserController) {
         self.rootViewController = rootViewController
@@ -45,28 +47,40 @@ class MainCoordinator : Coordinator {
         let mainViewController = UIStoryboard.mainViewController
         mainViewController.delegate = self
         mainViewController.userController = userController
-        rootViewController.pushViewController(mainViewController, animated: false)
         
+        rootViewController.pushViewController(mainViewController, animated: false)
     }
-    
+ 
 }
 
 extension MainCoordinator : MainViewControllerDelegate {
+    func didTapSignOut() {
+        showSignIn(animated: true)
+    }
+    
     func signInUser() {
+        showSignIn(animated: false)
+    }
+    
+    func showSignIn(animated: Bool) {
+
         let signInViewController = UIStoryboard.signInViewController
         signInViewController.delegate = self
         if let topViewController = rootViewController.viewControllers.last {
-            topViewController.present(signInViewController, animated: false, completion: nil)
+            topViewController.present(signInViewController, animated: animated, completion: nil)
+        }
+        
+    }
+
+}
+
+extension MainCoordinator : SignInViewControllerDelegate {
+    func didFinishSignin() {
+        if let topVc = rootViewController.topViewController {
+            topVc.dismiss(animated: true, completion: nil)
         }
     }
 }
 
-extension MainCoordinator : SignInViewControllerDelegate {
-    func didSignInUser() {
-        
-    }
-    
-    func errorSigningInUser() {
-        
-    }
-}
+
+

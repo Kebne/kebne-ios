@@ -7,37 +7,36 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 protocol SignInViewControllerDelegate : class {
-    func didSignInUser()
-    func errorSigningInUser()
+    func didFinishSignin()
 }
 
-class SignInViewController: UIViewController {
-    
-    weak var delegate: SignInViewControllerDelegate?
-    var userController: UserController!
 
+class SignInViewController: UIViewController, GIDSignInUIDelegate {
+
+    weak var delegate: SignInViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        
+        
     }
     
-    
-    
-    @IBAction func didTapSignInButton() {
-        //TODO - call google API...	
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        GIDSignIn.sharedInstance()?.delegate = self
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+extension SignInViewController : GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error == nil {
+            delegate?.didFinishSignin()
+        }
+    }
+}
+
