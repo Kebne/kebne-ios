@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		518A29C12155148F00E02A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C02155148F00E02A5F /* AppDelegate.swift */; };
-		518A29C32155148F00E02A5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C22155148F00E02A5F /* ViewController.swift */; };
+		518A29C32155148F00E02A5F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C22155148F00E02A5F /* MainViewController.swift */; };
 		518A29C62155148F00E02A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518A29C42155148F00E02A5F /* Main.storyboard */; };
 		518A29C82155149100E02A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 518A29C72155149100E02A5F /* Assets.xcassets */; };
 		518A29CB2155149100E02A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518A29C92155149100E02A5F /* LaunchScreen.storyboard */; };
 		518A29D62155149100E02A5F /* KebneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29D52155149100E02A5F /* KebneTests.swift */; };
 		518A29E12155149100E02A5F /* KebneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29E02155149100E02A5F /* KebneUITests.swift */; };
+		518A29EF2158D3D700E02A5F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29EE2158D3D700E02A5F /* SignInViewController.swift */; };
+		518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F02158D4AC00E02A5F /* MainCoordinator.swift */; };
+		518A29F32158E45A00E02A5F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F22158E45A00E02A5F /* UserController.swift */; };
+		518A29F52158E47300E02A5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F42158E47300E02A5F /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,7 @@
 /* Begin PBXFileReference section */
 		518A29BD2155148F00E02A5F /* Kebne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kebne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518A29C02155148F00E02A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		518A29C22155148F00E02A5F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		518A29C22155148F00E02A5F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		518A29C52155148F00E02A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		518A29C72155149100E02A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		518A29CA2155149100E02A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +51,10 @@
 		518A29DC2155149100E02A5F /* KebneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KebneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		518A29E02155149100E02A5F /* KebneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebneUITests.swift; sourceTree = "<group>"; };
 		518A29E22155149100E02A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		518A29EE2158D3D700E02A5F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		518A29F02158D4AC00E02A5F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		518A29F22158E45A00E02A5F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		518A29F42158E47300E02A5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +106,15 @@
 			isa = PBXGroup;
 			children = (
 				518A29C02155148F00E02A5F /* AppDelegate.swift */,
-				518A29C22155148F00E02A5F /* ViewController.swift */,
+				518A29C22155148F00E02A5F /* MainViewController.swift */,
+				518A29EE2158D3D700E02A5F /* SignInViewController.swift */,
 				518A29C42155148F00E02A5F /* Main.storyboard */,
 				518A29C72155149100E02A5F /* Assets.xcassets */,
 				518A29C92155149100E02A5F /* LaunchScreen.storyboard */,
 				518A29CC2155149100E02A5F /* Info.plist */,
+				518A29F02158D4AC00E02A5F /* MainCoordinator.swift */,
+				518A29F22158E45A00E02A5F /* UserController.swift */,
+				518A29F42158E47300E02A5F /* User.swift */,
 			);
 			path = Kebne;
 			sourceTree = "<group>";
@@ -256,8 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				518A29C32155148F00E02A5F /* ViewController.swift in Sources */,
+				518A29F32158E45A00E02A5F /* UserController.swift in Sources */,
+				518A29C32155148F00E02A5F /* MainViewController.swift in Sources */,
+				518A29F52158E47300E02A5F /* User.swift in Sources */,
+				518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */,
 				518A29C12155148F00E02A5F /* AppDelegate.swift in Sources */,
+				518A29EF2158D3D700E02A5F /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
