@@ -18,6 +18,7 @@
 		518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F02158D4AC00E02A5F /* MainCoordinator.swift */; };
 		518A29F32158E45A00E02A5F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F22158E45A00E02A5F /* UserController.swift */; };
 		518A29F52158E47300E02A5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F42158E47300E02A5F /* User.swift */; };
+		70873D6F55D10EA247F0ACA1 /* libPods-Kebne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07998DEC3A00BF26E0518A6F /* Pods-Kebne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kebne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kebne/Pods-Kebne.debug.xcconfig"; sourceTree = "<group>"; };
+		1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kebne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		518A29BD2155148F00E02A5F /* Kebne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kebne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518A29C02155148F00E02A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518A29C22155148F00E02A5F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		518A29F02158D4AC00E02A5F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		518A29F22158E45A00E02A5F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		518A29F42158E47300E02A5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9C891FB7F4182A6B059FFEC1 /* Pods-Kebne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kebne.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kebne/Pods-Kebne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70873D6F55D10EA247F0ACA1 /* libPods-Kebne.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +94,8 @@
 				518A29D42155149100E02A5F /* KebneTests */,
 				518A29DF2155149100E02A5F /* KebneUITests */,
 				518A29BE2155148F00E02A5F /* Products */,
+				B51DEA3D40CBD605D1A58D8C /* Pods */,
+				9BCE4D07DA63291CA1895695 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +144,23 @@
 			path = KebneUITests;
 			sourceTree = "<group>";
 		};
+		9BCE4D07DA63291CA1895695 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B51DEA3D40CBD605D1A58D8C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				07998DEC3A00BF26E0518A6F /* Pods-Kebne.debug.xcconfig */,
+				9C891FB7F4182A6B059FFEC1 /* Pods-Kebne.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 518A29E52155149100E02A5F /* Build configuration list for PBXNativeTarget "Kebne" */;
 			buildPhases = (
+				F0F3384884A358E3AFB5CA63 /* [CP] Check Pods Manifest.lock */,
 				518A29B92155148F00E02A5F /* Sources */,
 				518A29BA2155148F00E02A5F /* Frameworks */,
 				518A29BB2155148F00E02A5F /* Resources */,
+				4B86CF2EF8E09516CE5FF0CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,6 +288,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B86CF2EF8E09516CE5FF0CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Kebne/Pods-Kebne-resources.sh",
+				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kebne/Pods-Kebne-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0F3384884A358E3AFB5CA63 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kebne-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		518A29B92155148F00E02A5F /* Sources */ = {
@@ -446,6 +521,7 @@
 		};
 		518A29E62155149100E02A5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07998DEC3A00BF26E0518A6F /* Pods-Kebne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +540,7 @@
 		};
 		518A29E72155149100E02A5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C891FB7F4182A6B059FFEC1 /* Pods-Kebne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
