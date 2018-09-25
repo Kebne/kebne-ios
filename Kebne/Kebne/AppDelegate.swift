@@ -7,16 +7,36 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var mainCoordinator: MainCoordinator!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let navigationController = UINavigationController()
+        navigationController.isNavigationBarHidden = true
+        let userController = UserController()
+        userController.setup()
+        mainCoordinator = MainCoordinator(rootViewController: navigationController, userController: userController, viewControllerFactory: ViewControllerFactoryClass(storyboard: UIStoryboard.main))
+        mainCoordinator.start()
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url as URL?,
+                                                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                 annotation: options[UIApplication.OpenURLOptionsKey.annotation])
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
