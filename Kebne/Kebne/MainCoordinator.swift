@@ -10,21 +10,36 @@ import Foundation
 import UIKit
 import GoogleSignIn
 
+protocol ViewControllerFactory {
 
+    var mainViewController: MainViewController {get}
+    var signinViewController: SignInViewController {get}
+}
+
+class ViewControllerFactoryClass : ViewControllerFactory {
+    var storyboard: UIStoryboard
+    
+    init(storyboard: UIStoryboard) {
+        self.storyboard = storyboard
+    }
+    
+    var mainViewController: MainViewController {
+        return storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+    }
+    
+    var signinViewController: SignInViewController {
+        return storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+    }
+    
+    
+}
 
 extension UIStoryboard {
     
     static var main : UIStoryboard {
         return UIStoryboard(name: "Main", bundle: nil)
     }
-    
-    static var mainViewController : MainViewController {
-        return UIStoryboard.main.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-    }
-    
-    static var signInViewController : SignInViewController {
-        return UIStoryboard.main.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
-    }
+
 }
 
 protocol Coordinator {
@@ -35,16 +50,18 @@ protocol Coordinator {
 class MainCoordinator : NSObject, Coordinator {
     
     var rootViewController: UINavigationController
-    var userController: UserController!
+    var userController: UserController
+    var viewControllerFactory: ViewControllerFactory
     
     
-    init(rootViewController: UINavigationController, userController: UserController) {
+    init(rootViewController: UINavigationController, userController: UserController, viewControllerFactory: ViewControllerFactory) {
         self.rootViewController = rootViewController
         self.userController = userController
+        self.viewControllerFactory = viewControllerFactory
     }
     
     func start() {
-        let mainViewController = UIStoryboard.mainViewController
+        let mainViewController = viewControllerFactory.mainViewController
         mainViewController.delegate = self
         mainViewController.userController = userController
         
@@ -64,7 +81,7 @@ extension MainCoordinator : MainViewControllerDelegate {
     
     func showSignIn(animated: Bool) {
 
-        let signInViewController = UIStoryboard.signInViewController
+        let signInViewController = viewControllerFactory.signinViewController
         signInViewController.delegate = self
         if let topViewController = rootViewController.viewControllers.last {
             topViewController.present(signInViewController, animated: animated, completion: nil)

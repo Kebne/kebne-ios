@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.isNavigationBarHidden = true
         let userController = UserController()
         userController.setup()
-        mainCoordinator = MainCoordinator(rootViewController: navigationController, userController: userController)
+        mainCoordinator = MainCoordinator(rootViewController: navigationController, userController: userController, viewControllerFactory: ViewControllerFactoryClass(storyboard: UIStoryboard.main))
         mainCoordinator.start()
         
         window = UIWindow(frame: UIScreen.main.bounds)
