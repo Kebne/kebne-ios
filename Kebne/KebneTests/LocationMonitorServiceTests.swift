@@ -86,7 +86,7 @@ class LocationMonitorServiceTests: XCTestCase {
         
         sut.startmonitorForKebneOfficeRegion(callback: {(didStartMonitor) in
             startedMonitoring = didStartMonitor
-        })
+        }, alocationManager: MockLocationManager.self)
         
         MockLocationManager.authStatus = .authorizedAlways
         mockLocationManager.triggerAuthChangeDelegateCallback()
@@ -101,11 +101,23 @@ class LocationMonitorServiceTests: XCTestCase {
         
         sut.startmonitorForKebneOfficeRegion(callback: {(didStartMonitor) in
             startedMonitoring = didStartMonitor
-        })
+        }, alocationManager: MockLocationManager.self)
         
         MockLocationManager.authStatus = .denied
         mockLocationManager.triggerAuthChangeDelegateCallback()
         XCTAssertFalse(startedMonitoring)
+    }
+    
+    func testObserverCallbackWhenStartingMonitoringInOfficeRegion() {
+        MockLocationManager.authStatus = .authorizedAlways
+        let mockObserver = MockRegionObserver()
+        mockObserver.isInRegion = false
+        mockLocationManager.shouldSendInOfficeRegionCoordinates = true
+        sut.registerRegion(observer: mockObserver)
+        
+        sut.startmonitorForKebneOfficeRegion(callback: {(isMonitoring) in }, alocationManager: MockLocationManager.self)
+        
+        XCTAssertTrue(mockObserver.isInRegion)
     }
 
 }
@@ -122,6 +134,7 @@ class MockLocationManager : LocationManager {
     var errorOnRegionMonitoring = false
     var locationManager: CLLocationManager = CLLocationManager()
     var didRequestAuthorization = false
+    var shouldSendInOfficeRegionCoordinates = false
     
     static func authorizationStatus() -> CLAuthorizationStatus {
         return authStatus
@@ -154,9 +167,27 @@ class MockLocationManager : LocationManager {
         delegate?.locationManager!(locationManager, didChangeAuthorization: MockLocationManager.authorizationStatus())
     }
     
+    func requestLocation() {
+        if shouldSendInOfficeRegionCoordinates {
+            delegate?.locationManager!(locationManager, didUpdateLocations: [CLLocation(latitude: CLLocationCoordinate2D.oxtorgsgatan8Coordinate.latitude, longitude: CLLocationCoordinate2D.oxtorgsgatan8Coordinate.longitude)])
+        } else {
+            delegate?.locationManager!(locationManager, didUpdateLocations: [CLLocation(latitude: 0.0, longitude: 0.0)])
+        }
+        
+    }
+    
     var monitoredRegions: Set<CLRegion> = Set<CLRegion>()
     
     var delegate: CLLocationManagerDelegate?
+}
+
+class MockRegionObserver : OfficeRegionObserver {
+    
+    var isInRegion = true
+    
+    func regionStateDidChange(toEntered: Bool) {
+        isInRegion = toEntered
+    }
     
     
 }

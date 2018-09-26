@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3fu-tT-QZq">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController storyboardIdentifier="SignInViewController" id="BYZ-38-t0r" customClass="SignInViewController" customModule="Kebne" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Annapurna" translatesAutoresizingMaskIntoConstraints="NO" id="JV0-ro-JMS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcJ-Gm-thT" customClass="GIDSignInButton">
-                                <rect key="frame" x="48.666666666666657" y="333" width="317" height="70"/>
+                                <rect key="frame" x="29" y="371" width="317" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="WiL-ga-7kG"/>
@@ -54,14 +54,14 @@
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="3fu-tT-QZq" customClass="MainViewController" customModule="Kebne" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BgQ-72-YWc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Annapurna" translatesAutoresizingMaskIntoConstraints="NO" id="TN1-lL-sSy">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hej, Emil!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMm-e3-ZUt">
-                                <rect key="frame" x="147.33333333333334" y="120" width="119.66666666666666" height="36"/>
+                                <rect key="frame" x="127.66666666666666" y="144" width="119.66666666666666" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=regular">
@@ -69,7 +69,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRo-Tv-saj">
-                                <rect key="frame" x="171.66666666666666" y="636" width="71" height="30"/>
+                                <rect key="frame" x="152" y="678" width="71" height="30"/>
                                 <state key="normal" title="SIGN OUT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -77,41 +77,57 @@
                                     <action selector="didTapSignOut:" destination="3fu-tT-QZq" eventType="touchUpInside" id="j5A-v1-3FP"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBJ-db-lO3">
-                                <rect key="frame" x="67.666666666666671" y="222.66666666666666" width="51" height="31"/>
-                                <connections>
-                                    <action selector="monitorSwitchDidSwitch:" destination="3fu-tT-QZq" eventType="valueChanged" id="nhN-xd-ku9"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tillåt dina kollegor att se när du är på kontoret" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyC-2S-2RH">
-                                <rect key="frame" x="67.666666666666657" y="192" width="278.66666666666674" height="15.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=regular">
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                </variation>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v9w-sR-EYZ">
+                                <rect key="frame" x="48.333333333333343" y="220.00000000000003" width="278.66666666666663" height="82.333333333333343"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tillåt dina kollegor att se när du är på kontoret" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyC-2S-2RH">
+                                        <rect key="frame" x="0.0" y="0.0" width="278.66666666666669" height="15.666666666666666"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        </variation>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBJ-db-lO3">
+                                        <rect key="frame" x="0.0" y="25.666666666666657" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="monitorSwitchDidSwitch:" destination="3fu-tT-QZq" eventType="valueChanged" id="nhN-xd-ku9"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Det ser ut som att du är på kontoret." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cmp-ZY-P4G">
+                                        <rect key="frame" x="0.0" y="66.666666666666686" width="220" height="15.666666666666671"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15.67" id="WHl-BO-mTJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QyP-03-Gzn" firstAttribute="bottom" secondItem="kRo-Tv-saj" secondAttribute="bottom" constant="70" id="1Sm-ZP-qKg"/>
-                            <constraint firstItem="HBJ-db-lO3" firstAttribute="leading" secondItem="qyC-2S-2RH" secondAttribute="leading" id="5rp-mo-eJj"/>
                             <constraint firstItem="TN1-lL-sSy" firstAttribute="trailing" secondItem="QyP-03-Gzn" secondAttribute="trailing" id="7hJ-ss-PpO"/>
                             <constraint firstItem="kRo-Tv-saj" firstAttribute="centerX" secondItem="BgQ-72-YWc" secondAttribute="centerX" id="7if-Vt-eEq"/>
+                            <constraint firstItem="v9w-sR-EYZ" firstAttribute="top" secondItem="dMm-e3-ZUt" secondAttribute="bottom" constant="40" id="C4w-Yo-blc"/>
                             <constraint firstItem="TN1-lL-sSy" firstAttribute="leading" secondItem="QyP-03-Gzn" secondAttribute="leading" id="FVr-sn-f2P"/>
-                            <constraint firstItem="qyC-2S-2RH" firstAttribute="centerX" secondItem="BgQ-72-YWc" secondAttribute="centerX" id="FzJ-AZ-Fje"/>
-                            <constraint firstItem="HBJ-db-lO3" firstAttribute="top" secondItem="qyC-2S-2RH" secondAttribute="bottom" constant="15" id="Gvo-5E-lRg"/>
                             <constraint firstItem="TN1-lL-sSy" firstAttribute="top" secondItem="BgQ-72-YWc" secondAttribute="top" id="HNP-jt-8hS"/>
                             <constraint firstItem="TN1-lL-sSy" firstAttribute="bottom" secondItem="BgQ-72-YWc" secondAttribute="bottom" id="JFQ-ZJ-kJu"/>
                             <constraint firstItem="dMm-e3-ZUt" firstAttribute="top" secondItem="QyP-03-Gzn" secondAttribute="top" constant="100" id="KTX-LW-rL0"/>
+                            <constraint firstItem="v9w-sR-EYZ" firstAttribute="centerX" secondItem="BgQ-72-YWc" secondAttribute="centerX" id="Ril-vf-Cc6"/>
                             <constraint firstItem="dMm-e3-ZUt" firstAttribute="centerX" secondItem="BgQ-72-YWc" secondAttribute="centerX" id="UZa-Jg-3Dm"/>
-                            <constraint firstItem="qyC-2S-2RH" firstAttribute="top" secondItem="dMm-e3-ZUt" secondAttribute="bottom" constant="36" id="WrB-4Z-6c7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QyP-03-Gzn"/>
                     </view>
                     <connections>
                         <outlet property="informationLabel" destination="qyC-2S-2RH" id="FyF-q6-kUH"/>
+                        <outlet property="locationLabel" destination="Cmp-ZY-P4G" id="NSY-Qz-2ep"/>
                         <outlet property="regionMonitorSwitch" destination="HBJ-db-lO3" id="bw4-Ew-9ug"/>
                         <outlet property="signOutButton" destination="kRo-Tv-saj" id="LES-Vo-2Sn"/>
                         <outlet property="titleLabel" destination="dMm-e3-ZUt" id="MVb-NE-WXj"/>

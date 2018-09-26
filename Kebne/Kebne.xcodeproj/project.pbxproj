@@ -49,6 +49,7 @@
 		518513E9215AC653000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		518513ED215AC6FB000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		518513EF215B8E81000B796D /* LocationMonitorServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMonitorServiceTests.swift; sourceTree = "<group>"; };
+		518513F1215BC7BE000B796D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		518A29BD2155148F00E02A5F /* Kebne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kebne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518A29C02155148F00E02A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518A29C22155148F00E02A5F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -406,6 +407,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				518513ED215AC6FB000B796D /* sv */,
+				518513F1215BC7BE000B796D /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

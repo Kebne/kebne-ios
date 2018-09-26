@@ -17,23 +17,37 @@ protocol MainViewControllerDelegate : class {
 
 class MainViewController: UIViewController {
     
+    enum Strings {
+        static let inOfficeMsg = NSLocalizedString("mainView.locationLabel.inOfficeMsg", comment: "")
+        static let notInOfficeMsg = NSLocalizedString("mainView.locationLabel.notInOfficeMsg", comment: "")
+        static let greetingMsg = NSLocalizedString("mainView.titleLabel.greeting", comment: "")
+    }
+    
     var userController: UserController!
     weak var delegate: MainViewControllerDelegate?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var informationLabel: UILabel!
     @IBOutlet weak var regionMonitorSwitch: UISwitch!
+    @IBOutlet weak var locationLabel: UILabel!
     
     var hideableViews = [UIView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideableViews = [titleLabel, signOutButton, informationLabel, regionMonitorSwitch]
+        hideableViews = [titleLabel, signOutButton, informationLabel, regionMonitorSwitch, locationLabel]
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         updateView()
+        userController.locationMonitorService.registerRegion(observer: self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        userController.locationMonitorService.removeRegion(observer: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,6 +61,7 @@ class MainViewController: UIViewController {
     @IBAction func didTapSignOut(_ sender: Any) {
         userController.signOut()
         userController.locationMonitorService.stopmonitorForKebneOfficeRegion()
+        regionMonitorSwitch.isOn = false
         regionMonitorSwitch.isEnabled = false
         signOutButton.isEnabled = false
         animateHide(views: hideableViews, isHidden: true, completion: {[weak self]() in
@@ -67,6 +82,7 @@ class MainViewController: UIViewController {
             })
         } else {
             userController.locationMonitorService.stopmonitorForKebneOfficeRegion()
+            updateLocationLabel()
         }
     }
     
@@ -76,15 +92,24 @@ class MainViewController: UIViewController {
 
         if let user = userController.user {
             hide(views: hideableViews, isHidden: false)
+            updateLocationLabel()
             regionMonitorSwitch.isEnabled = userController.locationMonitorService.canMonitorForRegions()
             regionMonitorSwitch.isOn = userController.locationMonitorService.isMonitoringForKebneOfficeRegion
-            titleLabel.text = "Hej, \(user.name)!"
+            titleLabel.text = "\(Strings.greetingMsg), \(user.name)!"
         } else {
             hide(views: hideableViews, isHidden: true)
         }
     }
     
-    
+    func updateLocationLabel() {
+        var text = ""
+        if userController.locationMonitorService.isMonitoringForKebneOfficeRegion && userController.locationMonitorService.isInRegion {
+            text = Strings.inOfficeMsg
+        } else if userController.locationMonitorService.isMonitoringForKebneOfficeRegion && !userController.locationMonitorService.isInRegion {
+            text = Strings.notInOfficeMsg
+        }
+        locationLabel.text = text
+    }
     
 }
 
@@ -96,6 +121,12 @@ extension MainViewController : GIDSignInDelegate {
         } else {
             delegate?.signInUser()
         }
+    }
+}
+
+extension MainViewController : OfficeRegionObserver {
+    func regionStateDidChange(toEntered: Bool) {
+        updateLocationLabel()
     }
 }
 
@@ -122,3 +153,5 @@ extension UIViewController {
         }
     }
 }
+
+

@@ -17,6 +17,7 @@ protocol LocationManager : class {
     func requestAlwaysAuthorization()
     var monitoredRegions: Set<CLRegion> { get }
     var delegate: CLLocationManagerDelegate? {get set}
+    func requestLocation()
 }
 
 
@@ -27,11 +28,15 @@ protocol OfficeRegionObserver : class {
 }
 
 
+extension CLLocationCoordinate2D {
+    static var oxtorgsgatan8Coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: 59.335286, longitude: 18.066011)
+    }
+}
 
 extension CLRegion {
-    
     static var kebneOfficeRegion : CLCircularRegion {
-        return CLCircularRegion(center: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0), radius: 50, identifier:LocationMonitorService.Constant.kebneOfficeRegionIdentifier)
+        return CLCircularRegion(center: CLLocationCoordinate2D.oxtorgsgatan8Coordinate, radius: 50, identifier:LocationMonitorService.Constant.kebneOfficeRegionIdentifier)
     }
 }
 
@@ -56,6 +61,14 @@ class LocationMonitorService : NSObject {
         return CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.classForCoder())
     }
     
+    
+    /// Starts core location region monitoring for a geo region in which Kebne office is contained.
+    /// Will request authorisation of location services if needed.
+    ///
+    /// - Parameters:
+    ///   - callback: If authorisation of location services fails or an error occurs, this will be invoked with a value of false.
+    ///               If authorisation is ok, core location will callback that monitoring started and the param callback will be invoked with true.
+    ///   - alocationManager: For testing purpouses the ability to send a mocked type.
     func startmonitorForKebneOfficeRegion(callback: @escaping (Bool) -> (), alocationManager: LocationManager.Type = CLLocationManager.self) {
         startMonitoringCallback = callback
         switch alocationManager.authorizationStatus() {
@@ -66,11 +79,8 @@ class LocationMonitorService : NSObject {
             callback(false)
             return
         default:
-            break
+            startMonitoring()
         }
-        
-        
-        startMonitoring()
     }
     
  
@@ -97,9 +107,20 @@ class LocationMonitorService : NSObject {
     }
     
     func registerRegion(observer: OfficeRegionObserver) {
+        guard observers.firstIndex(where: {$0 === observer}) == nil else {return}
         observers.append(observer)
     }
-
+    
+    func removeRegion(observer: OfficeRegionObserver) {
+        if let index = observers.firstIndex(where: {$0 === observer}) {
+            observers.remove(at: index)
+        }
+    }
+    
+    private func checkIsInRegion() {
+        locationManager.requestLocation()
+    }
+    
 }
 
 
@@ -117,6 +138,7 @@ extension LocationMonitorService : CLLocationManagerDelegate {
         if let callback = startMonitoringCallback {
             callback(true)
         }
+        checkIsInRegion()
         startMonitoringCallback = nil
     }
     
@@ -129,13 +151,19 @@ extension LocationMonitorService : CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedAlways || status == .authorizedWhenInUse {
+        if status == .authorizedAlways || status == .authorizedWhenInUse, startMonitoringCallback != nil {
             startMonitoring()
         } else if let callback = startMonitoringCallback {
             callback(false)
             startMonitoringCallback = nil
         }
-        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        isInRegion = locations.contains(where: {CLRegion.kebneOfficeRegion.contains($0.coordinate)})
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
     }
 }
