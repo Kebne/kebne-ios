@@ -56,9 +56,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Appen använder platstjänster för att se när du är i närheten av Kebnes kontor.</string>
+	<string>Appen använder platsinfo för att se när du är i närheten av Kebnes kontor.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Appen använder platstjänster för att se när du är i närheten av Kebnes kontor.</string>
+	<string>Appen använder platsinfo för att se när du är i närheten av Kebnes kontor.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

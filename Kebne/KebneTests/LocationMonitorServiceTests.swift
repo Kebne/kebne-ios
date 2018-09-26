@@ -32,13 +32,10 @@ class LocationMonitorServiceTests: XCTestCase {
         MockLocationManager.authStatus = .denied
         var canMonitor = true
         
-        
-
         sut.startmonitorForKebneOfficeRegion(callback: {(canMonitorRegions) in
             canMonitor = canMonitorRegions
         }, alocationManager: MockLocationManager.self)
-        
-        
+
         XCTAssertFalse(canMonitor)
     }
     

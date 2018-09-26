@@ -7,8 +7,8 @@
 */
 
 "alert.title.regionMonitoringUnavailable" = "Tyvärr...";
-"alert.message.regionMonitoringUnavailable" = "Appen kan inte övervaka georegions. Se till att appen får använda platstjänster i telefonens inställningar.";
+"alert.message.regionMonitoringUnavailable" = "Appen kan inte övervaka georegions. Se till att appen alltid får använda platsinfo i telefonens inställningar.";
 "mainView.locationLabel.inOfficeMsg" = "Det ser ut som att du är på kontoret.";
 "mainView.locationLabel.notInOfficeMsg" = "Det ser ut som att du inte är på kontoret.";
-"mainView.titleLabel.greeting" = "Hej"
+"mainView.titleLabel.greeting" = "Hej";
 

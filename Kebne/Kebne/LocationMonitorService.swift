@@ -75,7 +75,7 @@ class LocationMonitorService : NSObject {
         case .notDetermined:
             locationManager.requestAlwaysAuthorization()
             return
-        case .denied, .restricted:
+        case .denied, .restricted, .authorizedWhenInUse:
             callback(false)
             return
         default:
@@ -151,7 +151,7 @@ extension LocationMonitorService : CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedAlways || status == .authorizedWhenInUse, startMonitoringCallback != nil {
+        if status == .authorizedAlways, startMonitoringCallback != nil {
             startMonitoring()
         } else if let callback = startMonitoringCallback {
             callback(false)
