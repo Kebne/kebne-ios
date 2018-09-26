@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Kebne
+
+  Created by Emil Lundgren on 2018-09-25.
+  Copyright © 2018 Emil Lundgren. All rights reserved.
+*/
+
+"alert.title.regionMonitoringUnavailable" = "Tyvärr...";
+"alert.message.regionMonitoringUnavailable" = "Appen kan inte övervaka georegions. Se till att appen får använda platstjänster i telefonens inställningar.";
+

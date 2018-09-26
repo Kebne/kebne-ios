@@ -10,13 +10,22 @@ import Foundation
 import UIKit
 import GoogleSignIn
 
+
 protocol ViewControllerFactory {
 
     var mainViewController: MainViewController {get}
     var signinViewController: SignInViewController {get}
+    func createSimpleAlert(withTitle title: String, message: String) ->UIAlertController
 }
 
 class ViewControllerFactoryClass : ViewControllerFactory {
+    func createSimpleAlert(withTitle title: String, message: String) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        return alertController
+    }
+    
+    
     var storyboard: UIStoryboard
     
     init(storyboard: UIStoryboard) {
@@ -30,6 +39,8 @@ class ViewControllerFactoryClass : ViewControllerFactory {
     var signinViewController: SignInViewController {
         return storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
     }
+    
+    
     
     
 }
@@ -48,6 +59,11 @@ protocol Coordinator {
 }
 
 class MainCoordinator : NSObject, Coordinator {
+    
+    enum Strings {
+        static let regionsNotAvAlertTitle = NSLocalizedString("alert.title.regionMonitoringUnavailable", comment: "")
+        static let regionsNotAvAlertMsg = NSLocalizedString("alert.message.regionMonitoringUnavailable", comment: "")
+    }
     
     var rootViewController: UINavigationController
     var userController: UserController
@@ -71,8 +87,16 @@ class MainCoordinator : NSObject, Coordinator {
 }
 
 extension MainCoordinator : MainViewControllerDelegate {
+    func regionMonitoringNotAvailable() {
+        if let topViewController = rootViewController.topViewController {
+            let alert = viewControllerFactory.createSimpleAlert(withTitle: Strings.regionsNotAvAlertTitle, message: Strings.regionsNotAvAlertMsg)
+            topViewController.present(alert, animated: true, completion: nil)
+           
+        }
+    }
+    
     func didTapSignOut() {
-        showSignIn(animated: true)
+        showSignIn(animated: false)
     }
     
     func signInUser() {
@@ -88,13 +112,13 @@ extension MainCoordinator : MainViewControllerDelegate {
         }
         
     }
-
+  
 }
 
 extension MainCoordinator : SignInViewControllerDelegate {
     func didFinishSignin() {
         if let topVc = rootViewController.topViewController {
-            topVc.dismiss(animated: true, completion: nil)
+            topVc.dismiss(animated: false, completion: nil)
         }
     }
 }
