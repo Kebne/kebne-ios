@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		518513F3215CF812000B796D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513F2215CF812000B796D /* NotificationService.swift */; };
+		518513F5215D00DD000B796D /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513F4215D00DD000B796D /* NotificationServiceTests.swift */; };
 		518A29C12155148F00E02A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C02155148F00E02A5F /* AppDelegate.swift */; };
 		518A29C32155148F00E02A5F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C22155148F00E02A5F /* MainViewController.swift */; };
 		518A29C62155148F00E02A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518A29C42155148F00E02A5F /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 /* Begin PBXFileReference section */
 		07998DEC3A00BF26E0518A6F /* Pods-Kebne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kebne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kebne/Pods-Kebne.debug.xcconfig"; sourceTree = "<group>"; };
 		1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kebne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		518513F2215CF812000B796D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		518513F4215D00DD000B796D /* NotificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceTests.swift; sourceTree = "<group>"; };
 		518A29BD2155148F00E02A5F /* Kebne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kebne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518A29C02155148F00E02A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518A29C22155148F00E02A5F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 				518A29F22158E45A00E02A5F /* UserController.swift */,
 				518A29F42158E47300E02A5F /* User.swift */,
 				51E74A6321590A820037153D /* Environment.swift */,
+				518513F2215CF812000B796D /* NotificationService.swift */,
 			);
 			path = Kebne;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			children = (
 				518A29D52155149100E02A5F /* KebneTests.swift */,
 				518A29D72155149100E02A5F /* Info.plist */,
+				518513F4215D00DD000B796D /* NotificationServiceTests.swift */,
 			);
 			path = KebneTests;
 			sourceTree = "<group>";
@@ -350,6 +356,7 @@
 				518A29C32155148F00E02A5F /* MainViewController.swift in Sources */,
 				518A29F52158E47300E02A5F /* User.swift in Sources */,
 				51E74A6421590A820037153D /* Environment.swift in Sources */,
+				518513F3215CF812000B796D /* NotificationService.swift in Sources */,
 				518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */,
 				518A29C12155148F00E02A5F /* AppDelegate.swift in Sources */,
 				518A29EF2158D3D700E02A5F /* SignInViewController.swift in Sources */,
@@ -360,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				518513F5215D00DD000B796D /* NotificationServiceTests.swift in Sources */,
 				518A29D62155149100E02A5F /* KebneTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
