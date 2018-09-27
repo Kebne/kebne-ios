@@ -10,10 +10,6 @@ import Foundation
 import GoogleSignIn
 
 class UserController : NSObject {
-    var locationMonitorService: LocationMonitorService
-    init(locationMonitorService: LocationMonitorService) {
-        self.locationMonitorService = locationMonitorService
-    }
     
     var user: User? {
         if let currentGoogleUser = GIDSignIn.sharedInstance()?.currentUser {
@@ -24,6 +20,7 @@ class UserController : NSObject {
     
     func setup() {
         GIDSignIn.sharedInstance().clientID = Environment.googleSigninClientID
+        
     }
     
     func signOut() {
@@ -31,7 +28,5 @@ class UserController : NSObject {
     }
     
 }
-
-
 
 

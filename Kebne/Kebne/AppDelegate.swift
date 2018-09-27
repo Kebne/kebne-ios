@@ -8,7 +8,6 @@
 
 import UIKit
 import GoogleSignIn
-import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
-        let userController = UserController(locationMonitorService: LocationMonitorService(locationManager: CLLocationManager()))
+        let userController = UserController()
         userController.setup()
         mainCoordinator = MainCoordinator(rootViewController: navigationController, userController: userController, viewControllerFactory: ViewControllerFactoryClass(storyboard: UIStoryboard.main))
         mainCoordinator.start()

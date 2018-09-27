@@ -17,8 +17,6 @@ protocol SignInViewControllerDelegate : class {
 class SignInViewController: UIViewController, GIDSignInUIDelegate {
 
     weak var delegate: SignInViewControllerDelegate?
-    @IBOutlet weak var signInButton: GIDSignInButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.uiDelegate = self
@@ -37,10 +35,7 @@ extension SignInViewController : GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error == nil {
-            animateHide(views: [signInButton], isHidden: true, completion: {[weak self] in
-                self?.delegate?.didFinishSignin()
-                
-            })
+            delegate?.didFinishSignin()
         }
     }
 }
