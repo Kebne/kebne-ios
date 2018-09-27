@@ -23,10 +23,16 @@ protocol LocationManager : class {
 
 extension CLLocationManager : LocationManager {}
 
-protocol OfficeRegionObserver : class {
+protocol OfficeRegionObserver : AnyObject {
     func regionStateDidChange(toEntered: Bool)
 }
 
+class ObserverWrapper {
+    weak var value: OfficeRegionObserver?
+    init(_ value: OfficeRegionObserver) {
+        self.value = value
+    }
+}
 
 extension CLLocationCoordinate2D {
     static var oxtorgsgatan8Coordinate: CLLocationCoordinate2D {
@@ -47,11 +53,12 @@ class LocationMonitorService : NSObject {
         static let kebneOfficeRegionIdentifier = "com.kebneapp.kebneOfficeRegionIdentifier"
     }
     
-    private var observers = [OfficeRegionObserver]()
+ 
+    private var observers = [ObserverWrapper]()
     private var locationManager: LocationManager
     fileprivate var startMonitoringCallback: StartRegionMonitorCallback?
     
-    required init(locationManager: LocationManager) {
+    init(locationManager: LocationManager) {
         self.locationManager = locationManager
         super.init()
         self.locationManager.delegate = self
@@ -86,7 +93,6 @@ class LocationMonitorService : NSObject {
  
     
     private func startMonitoring() {
-        
         locationManager.startMonitoring(for: CLRegion.kebneOfficeRegion)
     }
     
@@ -100,19 +106,21 @@ class LocationMonitorService : NSObject {
     
     private(set) var isInRegion: Bool = false {
         didSet {
-            for observer in observers {
-                observer.regionStateDidChange(toEntered: isInRegion)
-            }
+            notifyObservers()
         }
     }
     
+    private func notifyObservers() {
+        observers.filter({$0.value != nil}).forEach({$0.value!.regionStateDidChange(toEntered: isInRegion)})
+    }
+    
     func registerRegion(observer: OfficeRegionObserver) {
-        guard observers.firstIndex(where: {$0 === observer}) == nil else {return}
-        observers.append(observer)
+        guard observers.firstIndex(where: {$0.value === observer}) == nil else {return}
+        observers.append(ObserverWrapper(observer))
     }
     
     func removeRegion(observer: OfficeRegionObserver) {
-        if let index = observers.firstIndex(where: {$0 === observer}) {
+        if let index = observers.firstIndex(where: {$0.value === observer}) {
             observers.remove(at: index)
         }
     }
