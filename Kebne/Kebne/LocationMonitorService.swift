@@ -58,7 +58,7 @@ class LocationMonitorService : NSObject {
     private var locationManager: LocationManager
     fileprivate var startMonitoringCallback: StartRegionMonitorCallback?
     
-    init(locationManager: LocationManager) {
+    required init(locationManager: LocationManager) {
         self.locationManager = locationManager
         super.init()
         self.locationManager.delegate = self
