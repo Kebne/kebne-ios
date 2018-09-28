@@ -12,6 +12,7 @@
 		518513F3215CF812000B796D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513F2215CF812000B796D /* NotificationService.swift */; };
 		518513F5215D00DD000B796D /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513F4215D00DD000B796D /* NotificationServiceTests.swift */; };
 		518513F7215E1AD1000B796D /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513F6215E1AD1000B796D /* IntegrationTests.swift */; };
+		518513F9215E2CAD000B796D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 518513F8215E2CAD000B796D /* GoogleService-Info.plist */; };
 		518A29C12155148F00E02A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C02155148F00E02A5F /* AppDelegate.swift */; };
 		518A29C32155148F00E02A5F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C22155148F00E02A5F /* MainViewController.swift */; };
 		518A29C62155148F00E02A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518A29C42155148F00E02A5F /* Main.storyboard */; };
@@ -56,6 +57,8 @@
 		518513F2215CF812000B796D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		518513F4215D00DD000B796D /* NotificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceTests.swift; sourceTree = "<group>"; };
 		518513F6215E1AD1000B796D /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		518513F8215E2CAD000B796D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		518513FA215E2CD1000B796D /* Kebne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kebne.entitlements; sourceTree = "<group>"; };
 		518A29BD2155148F00E02A5F /* Kebne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kebne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518A29C02155148F00E02A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518A29C22155148F00E02A5F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		518A29BF2155148F00E02A5F /* Kebne */ = {
 			isa = PBXGroup;
 			children = (
+				518513FA215E2CD1000B796D /* Kebne.entitlements */,
 				518A29C02155148F00E02A5F /* AppDelegate.swift */,
 				518A29C22155148F00E02A5F /* MainViewController.swift */,
 				518A29EE2158D3D700E02A5F /* SignInViewController.swift */,
@@ -136,6 +140,7 @@
 				518A29C72155149100E02A5F /* Assets.xcassets */,
 				518A29C92155149100E02A5F /* LaunchScreen.storyboard */,
 				518A29CC2155149100E02A5F /* Info.plist */,
+				518513F8215E2CAD000B796D /* GoogleService-Info.plist */,
 				518A29F02158D4AC00E02A5F /* MainCoordinator.swift */,
 				518A29F22158E45A00E02A5F /* UserController.swift */,
 				518A29F42158E47300E02A5F /* User.swift */,
@@ -255,6 +260,11 @@
 				TargetAttributes = {
 					518A29BC2155148F00E02A5F = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					518A29D02155149100E02A5F = {
 						CreatedOnToolsVersion = 10.0;
@@ -293,6 +303,7 @@
 			files = (
 				518A29CB2155149100E02A5F /* LaunchScreen.storyboard in Resources */,
 				518513EC215AC6FB000B796D /* Localizable.strings in Resources */,
+				518513F9215E2CAD000B796D /* GoogleService-Info.plist in Resources */,
 				518A29C82155149100E02A5F /* Assets.xcassets in Resources */,
 				518A29C62155148F00E02A5F /* Main.storyboard in Resources */,
 			);
@@ -568,6 +579,7 @@
 			baseConfigurationReference = 07998DEC3A00BF26E0518A6F /* Pods-Kebne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Kebne/Kebne.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2TLM57CUQ3;
@@ -590,6 +602,7 @@
 			baseConfigurationReference = 9C891FB7F4182A6B059FFEC1 /* Pods-Kebne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Kebne/Kebne.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2TLM57CUQ3;

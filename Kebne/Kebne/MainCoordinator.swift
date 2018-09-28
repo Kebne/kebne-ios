@@ -39,10 +39,6 @@ class ViewControllerFactoryClass : ViewControllerFactory {
     var signinViewController: SignInViewController {
         return storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
     }
-    
-    
-    
-    
 }
 
 extension UIStoryboard {
@@ -50,7 +46,6 @@ extension UIStoryboard {
     static var main : UIStoryboard {
         return UIStoryboard(name: "Main", bundle: nil)
     }
-
 }
 
 protocol Coordinator {
@@ -70,7 +65,6 @@ class MainCoordinator : NSObject, Coordinator {
     var rootViewController: UINavigationController
     var userController: UserController
     var viewControllerFactory: ViewControllerFactory
-    
     
     init(rootViewController: UINavigationController, userController: UserController, viewControllerFactory: ViewControllerFactory) {
         self.rootViewController = rootViewController
@@ -112,7 +106,6 @@ extension MainCoordinator : MainViewControllerDelegate {
         if let topViewController = rootViewController.viewControllers.last {
             topViewController.present(signInViewController, animated: animated, completion: nil)
         }
-        
     }
     
     func showAlertWith(title: String, message: String) {

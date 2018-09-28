@@ -71,11 +71,13 @@ class LocationMonitorService : NSObject {
     
     /// Starts core location region monitoring for a geo region in which Kebne office is contained.
     /// Will request authorisation of location services if needed.
+    /// If monitoring was started, a request is made to the CLLocationManager instance for the current location
+    /// When receiving callback of the current location, it will be interpreted as a region boundary crossing and notified.
     ///
     /// - Parameters:
     ///   - callback: If authorisation of location services fails or an error occurs, this will be invoked with a value of false.
-    ///               If authorisation is ok, core location will callback that monitoring started and the param callback will be invoked with true.
-    ///   - alocationManager: For testing purpouses the ability to send a mocked type.
+    ///               If authorisation is ok, core location will callback that monitoring started and callback will be invoked with true.
+    ///   - alocationManager: For testing purpouses the ability to use a mocked type.
     func startmonitorForKebneOfficeRegion(callback: @escaping (Bool) -> (), alocationManager: LocationManager.Type = CLLocationManager.self) {
         startMonitoringCallback = callback
         switch alocationManager.authorizationStatus() {

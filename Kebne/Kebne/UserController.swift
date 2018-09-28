@@ -8,10 +8,14 @@
 
 import Foundation
 import GoogleSignIn
+import Firebase
 
 class UserController : NSObject {
     var locationMonitorService: LocationMonitorService
     var notificationService: NotificationService
+    enum Constant {
+        static let googleFirebaseScope = "https://www.googleapis.com/auth/firebase.messaging"
+    }
     init(locationMonitorService: LocationMonitorService, notificationService: NotificationService) {
         self.locationMonitorService = locationMonitorService
         self.notificationService = notificationService
@@ -25,7 +29,15 @@ class UserController : NSObject {
     }
     
     func googleSetup() {
-        GIDSignIn.sharedInstance().clientID = Environment.googleSigninClientID
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        
+        var scopes = [Any]()
+        if let currentScopes = GIDSignIn.sharedInstance()?.scopes {
+            scopes.append(contentsOf: currentScopes)
+        }
+        scopes.append(Constant.googleFirebaseScope)
+        GIDSignIn.sharedInstance()?.scopes = scopes
+        
     }
     
     func observeRegionBoundaryCrossing() {

@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import Firebase
 
 protocol MainViewControllerDelegate : class {
     func didTapSignOut()
@@ -55,7 +56,7 @@ class MainViewController: UIViewController {
         super.viewDidAppear(true)
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.signInSilently()
-       
+   
     }
 
     //MARK: Action
@@ -98,6 +99,13 @@ class MainViewController: UIViewController {
     }
     
     
+    @IBAction func didPressSendNotification() {
+        if let user = userController.user {
+            userController.notificationService.regionBoundaryCrossedBy(user: user, didEnter: true)
+        }
+    }
+    
+    
     //MARK: Update UI
     func updateView() {
 
@@ -127,10 +135,19 @@ class MainViewController: UIViewController {
 
 extension MainViewController : GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        guard user != nil else {
+            delegate?.didTapSignOut()
+            return
+        }
         if error == nil {
-            updateView()
-        } else {
-            delegate?.signInUser()
+            let credential = GoogleAuthProvider.credential(withIDToken: user.authentication.idToken,
+                                                           accessToken: user.authentication.accessToken)
+            Auth.auth().signInAndRetrieveData(with: credential) {[weak self](authResult, error) in
+                guard authResult != nil, error == nil else {return}
+                self?.userController.notificationService.subscribeToFirebaseMessaging()
+               self?.updateView()
+            }
+            
         }
     }
 }

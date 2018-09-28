@@ -1,4 +1,7 @@
 platform :ios, '11.0'
 target "Kebne" do
   pod 'GoogleSignIn'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Auth'
 end 

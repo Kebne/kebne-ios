@@ -8,6 +8,8 @@
 
 import UIKit
 import UserNotifications
+import Firebase
+import GoogleSignIn
 
 
 struct KebneNotification {
@@ -74,6 +76,9 @@ extension KebneNotification {
         case didEnter(User)
         case didExit(User)
         
+        static let didEnterTopic = "didEnter"
+        static let didExitTopic = "didExit"
+        
         init(didEnter: Bool, user: User) {
             self = didEnter ? .didEnter(user) : .didExit(user)
         }
@@ -99,9 +104,9 @@ extension KebneNotification {
         var notificationTopic: String {
             switch self {
             case .didEnter(_):
-                return "topic/didEnter"
+                return BoundaryCrossing.didEnterTopic
             case .didExit(_):
-                return "topic/didExit"
+                return BoundaryCrossing.didExitTopic
             }
         }
     }
@@ -113,24 +118,35 @@ class NotificationService: NSObject {
 
     func requestAuthForNotifications(completion: @escaping (Bool)->()) {
         UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: {(settings) in
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler:{[weak self](settings) in
             if settings.authorizationStatus == .notDetermined {
                 let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
                 UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {(granted, _) in
+                    if granted {
+                        self?.subscribeToFirebaseMessaging()
+                    }
                     completion(granted)
                 })
             } else if settings.authorizationStatus == .denied {
                 completion(false)
             } else {
                 completion(true)
+                self?.subscribeToFirebaseMessaging()
             }
         })
         
     }
     
+    func subscribeToFirebaseMessaging() {
+        print("Did subscribe to topics")
+        Messaging.messaging().delegate = self
+        Messaging.messaging().subscribe(toTopic: KebneNotification.BoundaryCrossing.didEnterTopic)
+        Messaging.messaging().subscribe(toTopic: KebneNotification.BoundaryCrossing.didExitTopic)
+    }
+    
     func regionBoundaryCrossedBy(user: User, didEnter: Bool) {
         let notification = KebneNotification(user: user, didEnter: didEnter)
-        sendLocal(notification: notification)
+       // sendLocal(notification: notification)
         do {
             let data = try JSONEncoder().encode(notification)
             postRemoteNotification(data: data)
@@ -141,6 +157,35 @@ class NotificationService: NSObject {
     
     private func postRemoteNotification(data: Data) {
         
+        guard let url = URL(string: "https://fcm.googleapis.com/v1/projects/kebne-office-app/messages:send") else {return}
+        print("Will send remote notification")
+        if let string = String(data: data, encoding: .utf8) {
+            print("Notification: \(string)")
+        }
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer " + GIDSignIn.sharedInstance()!.currentUser.authentication.accessToken, forHTTPHeaderField: "Authorization")
+        let task = URLSession.shared.uploadTask(with: request, from: data) { data, response, error in
+            if let error = error {
+                print ("error: \(error)")
+                return
+            }
+            guard let response = response as? HTTPURLResponse else {
+                    print ("server error")
+                    return
+            }
+            print("response status code: \(response.statusCode)")
+            if let mimeType = response.mimeType,
+                mimeType == "application/json",
+                let data = data,
+                let dataString = String(data: data, encoding: .utf8) {
+                print ("got data: \(dataString)")
+            }
+        }
+        task.resume()
+ 
     }
     
     private func sendLocal(notification: KebneNotification) {
@@ -159,4 +204,14 @@ class NotificationService: NSObject {
 
 extension NotificationService : UNUserNotificationCenterDelegate {
     
+}
+
+extension NotificationService : MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        print("Did receive remote message.")
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Messaging did receive registration token: \(fcmToken)")
+    }
 }
