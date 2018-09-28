@@ -111,7 +111,7 @@ class MainViewController: UIViewController {
 
         if let user = userController.user {
             hide(views: hideableViews, isHidden: false)
-            updateLocationLabel()
+            locationLabel.text = ""
             regionMonitorSwitch.isEnabled = userController.locationMonitorService.canMonitorForRegions()
             regionMonitorSwitch.isOn = userController.locationMonitorService.isMonitoringForKebneOfficeRegion
             titleLabel.text = "\(Strings.greetingMsg), \(user.name)!"

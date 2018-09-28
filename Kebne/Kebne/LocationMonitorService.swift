@@ -71,8 +71,6 @@ class LocationMonitorService : NSObject {
     
     /// Starts core location region monitoring for a geo region in which Kebne office is contained.
     /// Will request authorisation of location services if needed.
-    /// If monitoring was started, a request is made to the CLLocationManager instance for the current location
-    /// When receiving callback of the current location, it will be interpreted as a region boundary crossing and notified.
     ///
     /// - Parameters:
     ///   - callback: If authorisation of location services fails or an error occurs, this will be invoked with a value of false.

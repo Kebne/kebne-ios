@@ -32,11 +32,20 @@ struct KebneNotification {
         case message
     }
     
-    init(user: User, didEnter: Bool) {
-        let boundaryCrossing = BoundaryCrossing(didEnter: didEnter, user: user)
+    private init(boundaryCrossing: BoundaryCrossing) {
         title = boundaryCrossing.notificationTitle
         body = boundaryCrossing.notificationBody
         topic = boundaryCrossing.notificationTopic
+    }
+    
+    init(user: User, didEnter: Bool) {
+        let boundaryCrossing = BoundaryCrossing(didEnter: didEnter, user: user)
+        self.init(boundaryCrossing: boundaryCrossing)
+    }
+    
+    init(user: User, didEnter: Bool, isLocal: Bool) {
+        let boundaryCrossing = BoundaryCrossing(didEnter: didEnter, user: user, isLocal: isLocal)
+        self.init(boundaryCrossing: boundaryCrossing)
     }
     
     var localNotificationContent: UNNotificationContent {
@@ -75,12 +84,19 @@ extension KebneNotification {
     enum BoundaryCrossing {
         case didEnter(User)
         case didExit(User)
+        case didEnterLocal(User)
+        case didExitLocal(User)
         
         static let didEnterTopic = "didEnter"
         static let didExitTopic = "didExit"
         
-        init(didEnter: Bool, user: User) {
-            self = didEnter ? .didEnter(user) : .didExit(user)
+        init(didEnter: Bool, user: User, isLocal: Bool = false) {
+            if isLocal {
+                self = didEnter ? .didEnterLocal(user) : .didExitLocal(user)
+            } else {
+               self = didEnter ? .didEnter(user) : .didExit(user)
+            }
+            
         }
         
         var notificationBody: String {
@@ -89,6 +105,10 @@ extension KebneNotification {
                 return user.name + " är på kontoret"
             case .didExit(let user):
                 return user.name + " har lämnat kontoret"
+            case .didEnterLocal(_):
+                return "Din kollegor blir notifierade att du är på kontoret."
+            case .didExitLocal(_):
+                return "Din kollegor blir notifierade att du har lämnat kontoret."
             }
         }
         
@@ -98,6 +118,10 @@ extension KebneNotification {
                 return "Någon är på kontoret."
             case .didExit(_):
                 return "Någon har lämnat kontoret."
+            case .didEnterLocal(let user):
+                return "Välkommen, \(user.name)!"
+            case .didExitLocal(let user):
+                return "Hejdå, \(user.name)!"
             }
         }
         
@@ -107,7 +131,9 @@ extension KebneNotification {
                 return BoundaryCrossing.didEnterTopic
             case .didExit(_):
                 return BoundaryCrossing.didExitTopic
+            default: return ""
             }
+            
         }
     }
 }
@@ -138,16 +164,16 @@ class NotificationService: NSObject {
     }
     
     func subscribeToFirebaseMessaging() {
-        print("Did subscribe to topics")
         Messaging.messaging().delegate = self
         Messaging.messaging().subscribe(toTopic: KebneNotification.BoundaryCrossing.didEnterTopic)
         Messaging.messaging().subscribe(toTopic: KebneNotification.BoundaryCrossing.didExitTopic)
     }
     
     func regionBoundaryCrossedBy(user: User, didEnter: Bool) {
-        let notification = KebneNotification(user: user, didEnter: didEnter)
-       // sendLocal(notification: notification)
+        let localNotification = KebneNotification(user: user, didEnter: didEnter, isLocal: true)
+        sendLocal(notification: localNotification)
         do {
+            let notification = KebneNotification(user: user, didEnter: didEnter)
             let data = try JSONEncoder().encode(notification)
             postRemoteNotification(data: data)
         } catch let e {
@@ -158,7 +184,6 @@ class NotificationService: NSObject {
     private func postRemoteNotification(data: Data) {
         
         guard let url = URL(string: "https://fcm.googleapis.com/v1/projects/kebne-office-app/messages:send") else {return}
-        print("Will send remote notification")
         if let string = String(data: data, encoding: .utf8) {
             print("Notification: \(string)")
         }
