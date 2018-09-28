@@ -11,8 +11,10 @@ import GoogleSignIn
 
 class UserController : NSObject {
     var locationMonitorService: LocationMonitorService
-    init(locationMonitorService: LocationMonitorService) {
+    var notificationService: NotificationService
+    init(locationMonitorService: LocationMonitorService, notificationService: NotificationService) {
         self.locationMonitorService = locationMonitorService
+        self.notificationService = notificationService
     }
     
     var user: User? {
@@ -22,13 +24,26 @@ class UserController : NSObject {
         return nil
     }
     
-    func setup() {
+    func googleSetup() {
         GIDSignIn.sharedInstance().clientID = Environment.googleSigninClientID
+    }
+    
+    func observeRegionBoundaryCrossing() {
+        locationMonitorService.registerRegion(observer: self)
     }
     
     func signOut() {
         GIDSignIn.sharedInstance()?.signOut()
     }
+    
+}
+
+extension UserController : OfficeRegionObserver {
+    func regionStateDidChange(toEntered: Bool) {
+        guard let user = user else {return}
+        notificationService.regionBoundaryCrossedBy(user: user, didEnter: toEntered)
+    }
+    
     
 }
 

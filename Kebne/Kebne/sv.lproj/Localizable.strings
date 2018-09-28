@@ -8,6 +8,8 @@
 
 "alert.title.regionMonitoringUnavailable" = "Tyvärr...";
 "alert.message.regionMonitoringUnavailable" = "Appen kan inte övervaka georegions. Se till att appen alltid får använda platsinfo i telefonens inställningar.";
+"alert.title.userDeclinedNotifications" = "Notiser inte tillåtna";
+"alert.message.userDeclinedNotifications" = "Du kommer inte att få notiser om någon med appen kommer till eller lämnar kontoret. För att ändra, gå in i telefonens inställningar och tillåt appen att visa notiser.";
 "mainView.locationLabel.inOfficeMsg" = "Det ser ut som att du är på kontoret.";
 "mainView.locationLabel.notInOfficeMsg" = "Det ser ut som att du inte är på kontoret.";
 "mainView.titleLabel.greeting" = "Hej";

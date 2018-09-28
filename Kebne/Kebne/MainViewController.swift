@@ -13,6 +13,7 @@ protocol MainViewControllerDelegate : class {
     func didTapSignOut()
     func signInUser()
     func regionMonitoringNotAvailable()
+    func userDeclinedNotifications()
 }
 
 class MainViewController: UIViewController {
@@ -75,7 +76,9 @@ class MainViewController: UIViewController {
         if sender.isOn {
             userController.locationMonitorService.startmonitorForKebneOfficeRegion(callback: {[weak self](startedMonitoring) in
                 guard let self = self else {return}
-                if !startedMonitoring {
+                if startedMonitoring {
+                    self.requestAuthForNotifications()
+                } else {
                     self.regionMonitorSwitch.setOn(false, animated: true)
                     self.delegate?.regionMonitoringNotAvailable()
                 }
@@ -84,6 +87,14 @@ class MainViewController: UIViewController {
             userController.locationMonitorService.stopmonitorForKebneOfficeRegion()
             updateLocationLabel()
         }
+    }
+    
+    private func requestAuthForNotifications() {
+        userController.notificationService.requestAuthForNotifications(completion: {[weak self](granted) in
+            if !granted {
+                self?.delegate?.userDeclinedNotifications()
+            }
+        })
     }
     
     

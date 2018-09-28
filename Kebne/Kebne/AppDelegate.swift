@@ -22,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
-        let userController = UserController(locationMonitorService: LocationMonitorService(locationManager: CLLocationManager()))
-        userController.setup()
+        let userController = UserController(locationMonitorService: LocationMonitorService(locationManager: CLLocationManager()), notificationService: NotificationService())
+        userController.googleSetup()
+        userController.observeRegionBoundaryCrossing()
         mainCoordinator = MainCoordinator(rootViewController: navigationController, userController: userController, viewControllerFactory: ViewControllerFactoryClass(storyboard: UIStoryboard.main))
         mainCoordinator.start()
         

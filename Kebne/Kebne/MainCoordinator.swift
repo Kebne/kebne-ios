@@ -63,6 +63,8 @@ class MainCoordinator : NSObject, Coordinator {
     enum Strings {
         static let regionsNotAvAlertTitle = NSLocalizedString("alert.title.regionMonitoringUnavailable", comment: "")
         static let regionsNotAvAlertMsg = NSLocalizedString("alert.message.regionMonitoringUnavailable", comment: "")
+        static let notificationsDeclinedAlertTitle = NSLocalizedString("alert.title.userDeclinedNotifications", comment: "")
+        static let notificationsDeclinedAlertMsg = NSLocalizedString("alert.message.userDeclinedNotifications", comment: "")
     }
     
     var rootViewController: UINavigationController
@@ -87,12 +89,12 @@ class MainCoordinator : NSObject, Coordinator {
 }
 
 extension MainCoordinator : MainViewControllerDelegate {
+    func userDeclinedNotifications() {
+        showAlertWith(title: Strings.notificationsDeclinedAlertTitle, message: Strings.notificationsDeclinedAlertMsg)
+    }
+    
     func regionMonitoringNotAvailable() {
-        if let topViewController = rootViewController.topViewController {
-            let alert = viewControllerFactory.createSimpleAlert(withTitle: Strings.regionsNotAvAlertTitle, message: Strings.regionsNotAvAlertMsg)
-            topViewController.present(alert, animated: true, completion: nil)
-           
-        }
+        showAlertWith(title: Strings.regionsNotAvAlertTitle, message: Strings.regionsNotAvAlertMsg)
     }
     
     func didTapSignOut() {
@@ -111,6 +113,13 @@ extension MainCoordinator : MainViewControllerDelegate {
             topViewController.present(signInViewController, animated: animated, completion: nil)
         }
         
+    }
+    
+    func showAlertWith(title: String, message: String) {
+        if let topViewController = rootViewController.topViewController {
+            let alert = viewControllerFactory.createSimpleAlert(withTitle: title, message: message)
+            topViewController.present(alert, animated: true, completion: nil)
+        }
     }
   
 }

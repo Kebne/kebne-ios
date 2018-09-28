@@ -21,11 +21,8 @@ class NotificationServiceTests: XCTestCase {
 
     
     func testThatItDecodesNotificationMessagesCorrectly() {
-        
-        let testTopic = "testTopic"
-        let testTitle = "testTitle"
-        let testBody = "testBody"
-        let notification = KebneNotification(topic: testTopic, title: testTitle, body: testBody)
+
+        let notification = KebneNotification(user: User(name: "testUser", email: "testEmail"), didEnter: true)
   
         
         guard let data = try? JSONEncoder().encode(notification) else {

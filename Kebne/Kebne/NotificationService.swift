@@ -33,7 +33,7 @@ struct KebneNotification {
     init(user: User, didEnter: Bool) {
         let boundaryCrossing = BoundaryCrossing(didEnter: didEnter, user: user)
         title = boundaryCrossing.notificationTitle
-        body = boundaryCrossing.notificationTopic
+        body = boundaryCrossing.notificationBody
         topic = boundaryCrossing.notificationTopic
     }
     
@@ -81,7 +81,7 @@ extension KebneNotification {
         var notificationBody: String {
             switch self {
             case .didEnter(let user):
-                return user.name + "är på kontoret"
+                return user.name + " är på kontoret"
             case .didExit(let user):
                 return user.name + " har lämnat kontoret"
             }
@@ -105,25 +105,27 @@ extension KebneNotification {
             }
         }
     }
-    
-    
-    
 }
 
 
 
 class NotificationService: NSObject {
-    
-    
-    
-    func requestAuthForNotifications() {
+
+    func requestAuthForNotifications(completion: @escaping (Bool)->()) {
         UNUserNotificationCenter.current().delegate = self
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {(success, _) in
-            if success {
-                UIApplication.shared.registerForRemoteNotifications()
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: {(settings) in
+            if settings.authorizationStatus == .notDetermined {
+                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+                UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {(granted, _) in
+                    completion(granted)
+                })
+            } else if settings.authorizationStatus == .denied {
+                completion(false)
+            } else {
+                completion(true)
             }
         })
+        
     }
     
     func regionBoundaryCrossedBy(user: User, didEnter: Bool) {
@@ -142,10 +144,14 @@ class NotificationService: NSObject {
     }
     
     private func sendLocal(notification: KebneNotification) {
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0,
-                                                        repeats: false)
-        let request = UNNotificationRequest(identifier: "LocalNotification", content: notification.localNotificationContent, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: {(settings) in
+            guard settings.authorizationStatus == .authorized else {return}
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1,
+                                                            repeats: false)
+            let request = UNNotificationRequest(identifier: "LocalNotification", content: notification.localNotificationContent, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        })
+        
     }
     
 }

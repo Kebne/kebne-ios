@@ -111,6 +111,7 @@ class LocationMonitorService : NSObject {
     }
     
     private func notifyObservers() {
+        print("Notify observers region boundary change to: \(isInRegion)")
         observers.filter({$0.value != nil}).forEach({$0.value!.regionStateDidChange(toEntered: isInRegion)})
     }
     

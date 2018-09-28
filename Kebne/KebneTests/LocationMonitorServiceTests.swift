@@ -173,6 +173,13 @@ class MockLocationManager : LocationManager {
         
     }
     
+    func triggerDidEnterRegion(_ entered: Bool) {
+        if entered {
+            delegate?.locationManager!(locationManager, didEnterRegion: CLCircularRegion.kebneOfficeRegion)
+        } else {
+            delegate?.locationManager!(locationManager, didExitRegion: CLCircularRegion.kebneOfficeRegion)
+        }
+    }
     var monitoredRegions: Set<CLRegion> = Set<CLRegion>()
     
     var delegate: CLLocationManagerDelegate?
