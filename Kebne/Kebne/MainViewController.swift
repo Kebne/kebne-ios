@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
     //MARK: Action
     @IBAction func didTapSignOut(_ sender: Any) {
         userController.signOut()
-        userController.locationMonitorService.stopmonitorForKebneOfficeRegion()
+        userController.locationMonitorService.stopMonitorForKebneOfficeRegion()
         regionMonitorSwitch.isOn = false
         regionMonitorSwitch.isEnabled = false
         signOutButton.isEnabled = false
@@ -75,7 +75,7 @@ class MainViewController: UIViewController {
     
     @IBAction func monitorSwitchDidSwitch(_ sender: UISwitch) {
         if sender.isOn {
-            userController.locationMonitorService.startmonitorForKebneOfficeRegion(callback: {[weak self](startedMonitoring) in
+            userController.locationMonitorService.startMonitorForKebneOfficeRegion(callback: {[weak self](startedMonitoring) in
                 guard let self = self else {return}
                 if startedMonitoring {
                     self.requestAuthForNotifications()
@@ -85,17 +85,18 @@ class MainViewController: UIViewController {
                 }
             })
         } else {
-            userController.locationMonitorService.stopmonitorForKebneOfficeRegion()
+            userController.locationMonitorService.stopMonitorForKebneOfficeRegion()
             updateLocationLabel()
         }
     }
     
     private func requestAuthForNotifications() {
+        guard let user = userController.user else {return}
         userController.notificationService.requestAuthForNotifications(completion: {[weak self](granted) in
             if !granted {
                 self?.delegate?.userDeclinedNotifications()
             }
-        })
+        }, user: user)
     }
     
     
@@ -143,8 +144,8 @@ extension MainViewController : GIDSignInDelegate {
             let credential = GoogleAuthProvider.credential(withIDToken: user.authentication.idToken,
                                                            accessToken: user.authentication.accessToken)
             Auth.auth().signInAndRetrieveData(with: credential) {[weak self](authResult, error) in
-                guard authResult != nil, error == nil else {return}
-                self?.userController.notificationService.subscribeToFirebaseMessaging()
+                guard authResult != nil, error == nil, let user = self?.userController.user else {return}
+                self?.userController.notificationService.subscribeToFirebaseMessaging(user: user)
                self?.updateView()
             }
             

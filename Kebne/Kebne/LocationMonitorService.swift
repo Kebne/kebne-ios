@@ -76,7 +76,7 @@ class LocationMonitorService : NSObject {
     ///   - callback: If authorisation of location services fails or an error occurs, this will be invoked with a value of false.
     ///               If authorisation is ok, core location will callback that monitoring started and callback will be invoked with true.
     ///   - alocationManager: For testing purpouses the ability to use a mocked type.
-    func startmonitorForKebneOfficeRegion(callback: @escaping (Bool) -> (), alocationManager: LocationManager.Type = CLLocationManager.self) {
+    func startMonitorForKebneOfficeRegion(callback: @escaping (Bool) -> (), alocationManager: LocationManager.Type = CLLocationManager.self) {
         startMonitoringCallback = callback
         switch alocationManager.authorizationStatus() {
         case .notDetermined:
@@ -96,7 +96,7 @@ class LocationMonitorService : NSObject {
         locationManager.startMonitoring(for: CLRegion.kebneOfficeRegion)
     }
     
-    func stopmonitorForKebneOfficeRegion() {
+    func stopMonitorForKebneOfficeRegion() {
         locationManager.stopMonitoring(for: CLRegion.kebneOfficeRegion)
     }
     

@@ -12,12 +12,14 @@ import CoreLocation
 import Firebase
 import FirebaseInstanceID
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var mainCoordinator: MainCoordinator!
-
+    var notificationResponder: KebneNotificationResponder!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -27,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userController = UserController(locationMonitorService: LocationMonitorService(locationManager: CLLocationManager()), notificationService: NotificationService())
         userController.googleSetup()
         userController.observeRegionBoundaryCrossing()
+        notificationResponder = userController
         mainCoordinator = MainCoordinator(rootViewController: navigationController, userController: userController, viewControllerFactory: ViewControllerFactoryClass(storyboard: UIStoryboard.main))
         mainCoordinator.start()
         
@@ -70,7 +73,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("Application did receive remote notification.")
+        print("Application did receive remote notification: \(userInfo)")
+        notificationResponder.appDidReceiveRemoteNotification(withUserInfo: userInfo)
+        
     }
 }
 

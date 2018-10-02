@@ -11,41 +11,115 @@ import UserNotifications
 import Firebase
 import GoogleSignIn
 
+extension String {
+    var emailWithoutIllegalCharacters : String {
+        return self.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ".", with: "")
+    }
+}
+
+
 
 struct KebneNotification {
-
     let topic: String
-    let title: String
     let body: String
+    let title: String
+    var localizedBody: String?
+    var localizedTitle: String?
+    let category: Category
+    let userName: String
+
+    let userEmail: String
     
-    enum NotificationKeys : CodingKey {
-        case title
-        case body
+    enum Category : String {
+        case boundaryCrossing = "BOUNDARYCROSSING_CATEGORY"
+        case other = "OTHER_CATEGORY"
+        
+    }
+
+    static let greetingAction = "GREETING_ACTION"
+    
+    enum NotificationKeys : String, CodingKey {
+        case title = "title_loc_key"
+        case body = "body_loc_key"
+        case titleArg = "title-loc-args[]"
+        case bodyArg = "body_loc_args[]"
+    }
+    
+    enum DataKeys : CodingKey {
+        case email
+        
+    }
+    
+    enum PayloadKeys : CodingKey {
+        case aps
+    }
+    
+    enum APSKeys :String, CodingKey {
+        case category = "category"
+        case alert = "alert"
     }
     
     enum MessageKeys: CodingKey {
         case topic
         case notification
+        case data
+        case apns
+        
     }
     
+    enum APNSKeys : CodingKey {
+        case payload
+    }
+ 
     enum RootKeys: CodingKey {
         case message
     }
     
-    private init(boundaryCrossing: BoundaryCrossing) {
-        title = boundaryCrossing.notificationTitle
-        body = boundaryCrossing.notificationBody
-        topic = boundaryCrossing.notificationTopic
+    enum NotificationResponseKeys : CodingKey {
+        case email
+        case aps
     }
     
-    init(user: User, didEnter: Bool) {
-        let boundaryCrossing = BoundaryCrossing(didEnter: didEnter, user: user)
-        self.init(boundaryCrossing: boundaryCrossing)
+    enum NotificationResponseAPSKeys : CodingKey {
+        case alert
+        case category
     }
     
-    init(user: User, didEnter: Bool, isLocal: Bool) {
-        let boundaryCrossing = BoundaryCrossing(didEnter: didEnter, user: user, isLocal: isLocal)
-        self.init(boundaryCrossing: boundaryCrossing)
+    enum AlertKeys : String, CodingKey {
+        case title = "title"
+        case body = "body"
+        case localizedTitle = "title-loc-key"
+        case localizedBody = "loc-key"
+        case titleArg = "title-loc-args"
+        case bodyArg = "loc-args"
+    }
+
+    init(title: String, body: String, topic: String, userEmail: String, category: Category, userName: String) {
+        self.title = title
+        self.body = body
+        self.topic = topic
+        self.userEmail = userEmail.emailWithoutIllegalCharacters
+        self.category = category
+        self.userName = userName
+    }
+    
+    init(localizedTitle: String, localizedBody: String, topic: String, userEmail: String, category: Category, userName: String) {
+        self.title = localizedTitle
+        self.body = localizedBody
+        self.localizedTitle = localizedTitle
+        self.localizedBody = localizedBody
+        self.topic = topic
+        self.userEmail = userEmail.emailWithoutIllegalCharacters
+        self.category = category
+        self.userName = userName
+    }
+    
+    init(title: String, body: String) {
+        self.init(title: title, body: body, topic: "", userEmail: "", category: .other, userName: "")
+    }
+    
+    init(title: String, body: String, topic: String) {
+        self.init(title: title, body: body, topic: topic, userEmail: "", category: .other, userName: "")
     }
     
     var localNotificationContent: UNNotificationContent {
@@ -59,12 +133,33 @@ struct KebneNotification {
 
 extension KebneNotification : Decodable {
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: RootKeys.self)
-        let messageContainer = try container.nestedContainer(keyedBy: MessageKeys.self, forKey: .message)
-        topic = try messageContainer.decode(String.self, forKey: .topic)
-        let notificationContainer = try messageContainer.nestedContainer(keyedBy: NotificationKeys.self, forKey: .notification)
-        title = try notificationContainer.decode(String.self, forKey: .title)
-        body = try notificationContainer.decode(String.self, forKey: .body)
+        let container = try decoder.container(keyedBy: NotificationResponseKeys.self)
+        userEmail = try container.decode(String.self, forKey: .email)
+        let apsContainer = try container.nestedContainer(keyedBy: APSKeys.self, forKey: .aps)
+        let alertContainer = try apsContainer.nestedContainer(keyedBy: AlertKeys.self, forKey: .alert)
+        localizedTitle = try? alertContainer.decode(String.self, forKey: .localizedTitle)
+        localizedBody = try? alertContainer.decode(String.self, forKey: .localizedBody)
+        let aBody = try? alertContainer.decode(String.self, forKey: .body)
+        let aTitle = try? alertContainer.decode(String.self, forKey: .title)
+        let bodyArg = try? alertContainer.decode([String].self, forKey: .bodyArg)
+        let titleArg = try? alertContainer.decode([String].self, forKey: .titleArg)
+        userName = bodyArg?.first ?? titleArg?.first ?? ""
+        if let locTitle = localizedTitle {
+            title = String(format: NSLocalizedString(locTitle, comment: ""), userName)
+        } else {
+            title = aTitle ?? ""
+        }
+        if let locBody = localizedBody {
+            body = String(format: NSLocalizedString(locBody, comment: ""), userName)
+        } else {
+            body = aBody ?? ""
+        }
+        
+        topic = ""
+        
+        let unwrappedCategoryString = try? apsContainer.decode(String.self, forKey:.category)
+        let unwrappedCategory = Category(rawValue: unwrappedCategoryString ?? "")
+        category = unwrappedCategory ?? .other
     }
 }
 
@@ -74,67 +169,88 @@ extension KebneNotification : Encodable {
         var dataContainer = encoder.container(keyedBy: RootKeys.self)
         var messageContainer = dataContainer.nestedContainer(keyedBy: MessageKeys.self, forKey: .message)
         try messageContainer.encode(topic, forKey: .topic)
-        var notificationContainer = messageContainer.nestedContainer(keyedBy: NotificationKeys.self, forKey: .notification)
-        try notificationContainer.encode(title, forKey: .title)
-        try notificationContainer.encode(body, forKey: .body)
+        var extendedDataContainer = messageContainer.nestedContainer(keyedBy: DataKeys.self, forKey: .data)
+        try extendedDataContainer.encode(userEmail, forKey: .email)
+        var apnsContainer = messageContainer.nestedContainer(keyedBy: APNSKeys.self, forKey: .apns)
+        var payloadContainer = apnsContainer.nestedContainer(keyedBy: PayloadKeys.self, forKey: .payload)
+        var apsContainer = payloadContainer.nestedContainer(keyedBy: APSKeys.self, forKey: .aps)
+        try apsContainer.encode(category.rawValue, forKey: .category)
+        var alertContainer = apsContainer.nestedContainer(keyedBy: AlertKeys.self, forKey: .alert)
+        if let locTitle = localizedTitle {
+            try alertContainer.encode(locTitle, forKey: .localizedTitle)
+            try alertContainer.encode([userName], forKey: .titleArg)
+        } else {
+            try alertContainer.encode(title, forKey: .title)
+        }
+        
+        if let locBody = localizedBody {
+            try alertContainer.encode(locBody, forKey: .localizedBody)
+            try alertContainer.encode([userName], forKey: .bodyArg)
+        } else {
+            try alertContainer.encode(body, forKey: .body)
+        }
+        
+        
+        
+        
+        
+        
     }
 }
 
-extension KebneNotification {
-    enum BoundaryCrossing {
-        case didEnter(User)
-        case didExit(User)
-        case didEnterLocal(User)
-        case didExitLocal(User)
-        
-        static let didEnterTopic = "didEnter"
-        static let didExitTopic = "didExit"
-        
-        init(didEnter: Bool, user: User, isLocal: Bool = false) {
-            if isLocal {
-                self = didEnter ? .didEnterLocal(user) : .didExitLocal(user)
-            } else {
-               self = didEnter ? .didEnter(user) : .didExit(user)
-            }
-            
+enum BoundaryCrossing {
+    case didEnter
+    case didExit
+    case didEnterLocal(String)
+    case didExitLocal(String)
+    
+    static let didEnterTopic = "didEnter"
+    static let didExitTopic = "didExit"
+    
+    init(didEnter: Bool, userName: String, isLocal: Bool = false) {
+        if isLocal {
+            self = didEnter ? .didEnterLocal(userName) : .didExitLocal(userName)
+        } else {
+            self = didEnter ? .didEnter : .didExit
         }
         
-        var notificationBody: String {
-            switch self {
-            case .didEnter(let user):
-                return user.name + " är på kontoret"
-            case .didExit(let user):
-                return user.name + " har lämnat kontoret"
-            case .didEnterLocal(_):
-                return "Din kollegor blir notifierade att du är på kontoret."
-            case .didExitLocal(_):
-                return "Din kollegor blir notifierade att du har lämnat kontoret."
-            }
+    }
+    
+    var notificationBody: String {
+        switch self {
+        case .didEnter:
+            return "notification.boundarycrossing.enter.body"
+        case .didExit:
+            return "notification.boundarycrossing.exit.body"
+        case .didEnterLocal:
+            return NSLocalizedString("localnotification.boundarycrossing.enter.body", comment: "")
+        case .didExitLocal:
+            return NSLocalizedString("localnotification.boundarycrossing.exit.body", comment: "")
+        }
+    }
+    
+    var notificationTitle: String {
+        switch self {
+        case .didEnter:
+            return "notification.boundarycrossing.enter.title"
+        case .didExit:
+            return "notification.boundarycrossing.exit.title"
+        case .didEnterLocal(let userName):
+            return String(format: NSLocalizedString("localnotification.boundarycrossing.enter.title", comment: ""), userName)
+        case .didExitLocal(let userName):
+            return String(format: NSLocalizedString("localnotification.boundarycrossing.exit.title", comment: ""), userName)
+        }
+    }
+    
+    var notificationTopic: String {
+        switch self {
+        case .didEnter:
+            return BoundaryCrossing.didEnterTopic
+        case .didExit:
+            return BoundaryCrossing.didExitTopic
+        default: return ""
         }
         
-        var notificationTitle: String {
-            switch self {
-            case .didEnter(_):
-                return "Någon är på kontoret."
-            case .didExit(_):
-                return "Någon har lämnat kontoret."
-            case .didEnterLocal(let user):
-                return "Välkommen, \(user.name)!"
-            case .didExitLocal(let user):
-                return "Hejdå, \(user.name)!"
-            }
-        }
-        
-        var notificationTopic: String {
-            switch self {
-            case .didEnter(_):
-                return BoundaryCrossing.didEnterTopic
-            case .didExit(_):
-                return BoundaryCrossing.didExitTopic
-            default: return ""
-            }
-            
-        }
     }
 }
 
@@ -142,14 +258,14 @@ extension KebneNotification {
 
 class NotificationService: NSObject {
 
-    func requestAuthForNotifications(completion: @escaping (Bool)->()) {
-        UNUserNotificationCenter.current().delegate = self
+    func requestAuthForNotifications(completion: @escaping (Bool)->(), user: User) {
+        
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler:{[weak self](settings) in
             if settings.authorizationStatus == .notDetermined {
                 let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
                 UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {(granted, _) in
                     if granted {
-                        self?.subscribeToFirebaseMessaging()
+                        self?.subscribeToFirebaseMessaging(user: user)
                     }
                     completion(granted)
                 })
@@ -157,32 +273,59 @@ class NotificationService: NSObject {
                 completion(false)
             } else {
                 completion(true)
-                self?.subscribeToFirebaseMessaging()
+                self?.subscribeToFirebaseMessaging(user: user)
             }
         })
         
     }
     
-    func subscribeToFirebaseMessaging() {
+    func subscribeToFirebaseMessaging(user: User) {
+        
+        Messaging.messaging().subscribe(toTopic: BoundaryCrossing.didEnterTopic)
+        Messaging.messaging().subscribe(toTopic: BoundaryCrossing.didExitTopic)
+        Messaging.messaging().subscribe(toTopic: user.email.emailWithoutIllegalCharacters)
+    }
+    
+    func setup() {
+        
         Messaging.messaging().delegate = self
-        Messaging.messaging().subscribe(toTopic: KebneNotification.BoundaryCrossing.didEnterTopic)
-        Messaging.messaging().subscribe(toTopic: KebneNotification.BoundaryCrossing.didExitTopic)
+
+        let greetWithTextField = UNTextInputNotificationAction(identifier: KebneNotification.greetingAction, title: KebneAppStrings.boundaryCrossingNotificationPlaceholder,
+                                                               options: .destructive, textInputButtonTitle: KebneAppStrings.boundaryCrossingNotificationOkTitle, textInputPlaceholder: KebneAppStrings.boundaryCrossingNotificationPlaceholder)
+
+        let meetingInviteCategory =
+            UNNotificationCategory(identifier: KebneNotification.Category.boundaryCrossing.rawValue,
+                                   actions: [greetWithTextField],
+                                   intentIdentifiers: [],
+                                   hiddenPreviewsBodyPlaceholder: "",
+                                   options: .customDismissAction)
+  
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.setNotificationCategories([meetingInviteCategory])
     }
     
     func regionBoundaryCrossedBy(user: User, didEnter: Bool) {
-        let localNotification = KebneNotification(user: user, didEnter: didEnter, isLocal: true)
+        let boundaryCrossing = BoundaryCrossing(didEnter: didEnter, userName: user.name, isLocal: true)
+        let localNotification = KebneNotification(title: boundaryCrossing.notificationTitle, body: boundaryCrossing.notificationBody)
         sendLocal(notification: localNotification)
+        let localBoundaryCrossing = BoundaryCrossing(didEnter: didEnter, userName: user.name)
+        let notification = KebneNotification(localizedTitle: localBoundaryCrossing.notificationTitle, localizedBody: localBoundaryCrossing.notificationBody,
+                                             topic: localBoundaryCrossing.notificationTopic, userEmail: user.email, category: .boundaryCrossing, userName: user.name)
+        handleRemote(notification: notification)
+        
+    }
+    
+    private func handleRemote(notification: KebneNotification) {
+        
         do {
-            let notification = KebneNotification(user: user, didEnter: didEnter)
             let data = try JSONEncoder().encode(notification)
-            postRemoteNotification(data: data)
+            post(data: data)
         } catch let e {
             print("Error encoding json: \(e)")
         }
     }
     
-    private func postRemoteNotification(data: Data) {
-        
+    private func post(data: Data) {
         guard let url = URL(string: "https://fcm.googleapis.com/v1/projects/kebne-office-app/messages:send") else {return}
         if let string = String(data: data, encoding: .utf8) {
             print("Notification: \(string)")
@@ -198,8 +341,8 @@ class NotificationService: NSObject {
                 return
             }
             guard let response = response as? HTTPURLResponse else {
-                    print ("server error")
-                    return
+                print ("server error")
+                return
             }
             print("response status code: \(response.statusCode)")
             if let mimeType = response.mimeType,
@@ -210,7 +353,6 @@ class NotificationService: NSObject {
             }
         }
         task.resume()
- 
     }
     
     private func sendLocal(notification: KebneNotification) {
@@ -221,15 +363,37 @@ class NotificationService: NSObject {
             let request = UNNotificationRequest(identifier: "LocalNotification", content: notification.localNotificationContent, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         })
+    }
+    
+    func respondTo(notification: KebneNotification, userName: String, greeting: String) {
+        var responseNotification = KebneNotification(title: "", body: greeting,
+                                                     topic: notification.userEmail, userEmail: "", category: .other, userName: userName)
+        responseNotification.localizedTitle = "notification.greeting.title"
+        handleRemote(notification: responseNotification)
+    }
+    
+    func handleIncomingNotification(response: UNNotificationResponse, userName: String) {
+        guard let textResponse = response as? UNTextInputNotificationResponse else {
+            return
+        }
+        do {
+            let notification = try notificationFrom(userInfo: response.notification.request.content.userInfo)
+            respondTo(notification: notification, userName: userName, greeting: textResponse.userText)
+        } catch let e {
+            print("Error decoding incoming notification response: \(e)")
+        }
         
+    }
+    
+    func notificationFrom(userInfo: [AnyHashable: Any]) throws ->KebneNotification  {
+        let data = try JSONSerialization.data(withJSONObject: userInfo, options: [])
+        let notification = try JSONDecoder().decode(KebneNotification.self, from: data)
+        return notification
     }
     
 }
 
 
-extension NotificationService : UNUserNotificationCenterDelegate {
-    
-}
 
 extension NotificationService : MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
