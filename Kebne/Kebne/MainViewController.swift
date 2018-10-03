@@ -143,6 +143,7 @@ extension MainViewController : GIDSignInDelegate {
         if error == nil {
             let credential = GoogleAuthProvider.credential(withIDToken: user.authentication.idToken,
                                                            accessToken: user.authentication.accessToken)
+            
             Auth.auth().signInAndRetrieveData(with: credential) {[weak self](authResult, error) in
                 guard authResult != nil, error == nil, let user = self?.userController.user else {return}
                 self?.userController.notificationService.subscribeToFirebaseMessaging(user: user)

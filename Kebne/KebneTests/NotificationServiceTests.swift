@@ -10,36 +10,69 @@ import XCTest
 @testable import Kebne
 
 class NotificationServiceTests: XCTestCase {
+    
+    var sut: NotificationService!
+    var mockNetworkService: MockNetworkService!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        mockNetworkService = MockNetworkService()
+        sut = NotificationService(networkService: mockNetworkService)
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
     }
 
     
     func testThatItDecodesNotificationMessagesCorrectly() {
 
-        let notification = KebneNotification(user: User(name: "testUser", email: "testEmail"), didEnter: true)
+       let notification = KebneNotification(title: "testTitle", body: "testBody", topic: "testTopic", userEmail: "test@test.se", category: .other, userName: "Testuser")
+        let notificationData: [AnyHashable:Any] = ["aps":["alert":["body":"testBody","title":"testTitle"],"category":KebneNotification.Category.other.rawValue],
+                                                   "email":"test@test.se".emailWithoutIllegalCharacters]
   
-        
-        guard let data = try? JSONEncoder().encode(notification) else {
-            XCTFail("Notification couldn't be encoded to JSON")
-            return
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: notificationData, options: [])
+            do {
+                let decodedJson = try JSONDecoder().decode(KebneNotification.self, from: jsonData)
+                XCTAssertEqual(notification.body, decodedJson.body)
+                XCTAssertEqual(notification.title, decodedJson.title)
+                XCTAssertEqual(notification.userEmail, decodedJson.userEmail)
+            } catch let e {
+                XCTFail("Couldn't decode data back to KebneNotification: \(e)")
+            }
+        } catch let e {
+            XCTFail("Couldn't serialize test notification data: \(e)")
         }
-        
-        guard let decodedJson = try? JSONDecoder().decode(KebneNotification.self, from: data) else {
-            XCTFail("Couldn't decode data back to KebneNotification")
-            return
-        }
-       
-        
-        XCTAssertEqual(notification.body, decodedJson.body)
-        XCTAssertEqual(notification.title, decodedJson.title)
-        XCTAssertEqual(notification.topic, decodedJson.topic)
     }
     
+    
+    func testThatItCreatesBoundaryCrossCloudMessage() {
+        
+        mockNetworkService.receivedData = nil
+        sut.regionBoundaryCrossedBy(user: fakeUser, didEnter: true)
+        
+        XCTAssertNotNil(mockNetworkService.receivedData)
+    }
+    
+    func testThatItCreatesNotificationResponse() {
+        mockNetworkService.receivedData = nil
+        let kebneNotification = KebneNotification(localizedTitle: "title", localizedBody: "body", topic: "topic", userEmail: "test@test.se", category: .other, userName: "Emil")
+        sut.respondTo(notification: kebneNotification, userName: "LocalUser", greeting: "Hey")
+        
+        XCTAssertNotNil(mockNetworkService.receivedData)
+    }
+    
+    var fakeUser: KebneUser {
+        return KebneUser(name: "user", email: "user@email.com")
+    }
 
+}
+
+class MockNetworkService : NetworkServiceProtocol {
+    
+    var receivedData: Data?
+    
+    func sendGoogleCloudMessage(data: Data) {
+        receivedData = data
+    }
 }

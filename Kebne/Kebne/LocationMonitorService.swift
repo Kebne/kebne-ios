@@ -42,7 +42,7 @@ extension CLLocationCoordinate2D {
 
 extension CLRegion {
     static var kebneOfficeRegion : CLCircularRegion {
-        return CLCircularRegion(center: CLLocationCoordinate2D.oxtorgsgatan8Coordinate, radius: 50, identifier:LocationMonitorService.Constant.kebneOfficeRegionIdentifier)
+        return CLCircularRegion(center: CLLocationCoordinate2D.oxtorgsgatan8Coordinate, radius: 100, identifier:LocationMonitorService.Constant.kebneOfficeRegionIdentifier)
     }
 }
 

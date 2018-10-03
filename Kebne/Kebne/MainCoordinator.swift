@@ -79,9 +79,7 @@ protocol Coordinator {
 }
 
 class MainCoordinator : NSObject, Coordinator {
-    
-    
-    
+
     var rootViewController: UINavigationController
     var userController: UserController
     var viewControllerFactory: ViewControllerFactory
@@ -99,6 +97,22 @@ class MainCoordinator : NSObject, Coordinator {
         mainViewController.userController = userController
         userController.delegate = self
         rootViewController.pushViewController(mainViewController, animated: false)
+    }
+    
+    func showSignIn(animated: Bool) {
+        
+        let signInViewController = viewControllerFactory.signinViewController
+        signInViewController.delegate = self
+        if let topViewController = rootViewController.viewControllers.last {
+            topViewController.present(signInViewController, animated: animated, completion: nil)
+        }
+    }
+    
+    func showAlertWith(title: String, message: String) {
+        if let topViewController = rootViewController.topViewController {
+            let alert = viewControllerFactory.createSimpleAlert(withTitle: title, message: message)
+            topViewController.present(alert, animated: true, completion: nil)
+        }
     }
  
 }
@@ -119,23 +133,7 @@ extension MainCoordinator : MainViewControllerDelegate {
     func signInUser() {
         showSignIn(animated: false)
     }
-    
-    func showSignIn(animated: Bool) {
 
-        let signInViewController = viewControllerFactory.signinViewController
-        signInViewController.delegate = self
-        if let topViewController = rootViewController.viewControllers.last {
-            topViewController.present(signInViewController, animated: animated, completion: nil)
-        }
-    }
-    
-    func showAlertWith(title: String, message: String) {
-        if let topViewController = rootViewController.topViewController {
-            let alert = viewControllerFactory.createSimpleAlert(withTitle: title, message: message)
-            topViewController.present(alert, animated: true, completion: nil)
-        }
-    }
-  
 }
 
 extension MainCoordinator : UserControllerDelegate {

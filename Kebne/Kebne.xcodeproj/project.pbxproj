@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4981329675E031B19836D495 /* Pods_Kebne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F74FE0418B6C39D4F17CB27 /* Pods_Kebne.framework */; };
+		512434A62164DE1500313840 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512434A52164DE1400313840 /* NetworkService.swift */; };
 		518513EC215AC6FB000B796D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 518513EE215AC6FB000B796D /* Localizable.strings */; };
 		518513F0215B8E81000B796D /* LocationMonitorServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513EF215B8E81000B796D /* LocationMonitorServiceTests.swift */; };
 		518513F3215CF812000B796D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513F2215CF812000B796D /* NotificationService.swift */; };
@@ -23,10 +25,10 @@
 		518A29EF2158D3D700E02A5F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29EE2158D3D700E02A5F /* SignInViewController.swift */; };
 		518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F02158D4AC00E02A5F /* MainCoordinator.swift */; };
 		518A29F32158E45A00E02A5F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F22158E45A00E02A5F /* UserController.swift */; };
-		518A29F52158E47300E02A5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F42158E47300E02A5F /* User.swift */; };
+		518A29F52158E47300E02A5F /* KebneUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F42158E47300E02A5F /* KebneUser.swift */; };
 		51E74A6421590A820037153D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E74A6321590A820037153D /* Environment.swift */; };
 		51E74A66215A5F3A0037153D /* LocationMonitorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E74A65215A5F3A0037153D /* LocationMonitorService.swift */; };
-		70873D6F55D10EA247F0ACA1 /* libPods-Kebne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */; };
+		8A6BD9BF5301BB452AE70596 /* Pods_KebneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFACDC2E145A53F1F4C6502 /* Pods_KebneTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +50,9 @@
 
 /* Begin PBXFileReference section */
 		07998DEC3A00BF26E0518A6F /* Pods-Kebne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kebne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kebne/Pods-Kebne.debug.xcconfig"; sourceTree = "<group>"; };
-		1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kebne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EFACDC2E145A53F1F4C6502 /* Pods_KebneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KebneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F74FE0418B6C39D4F17CB27 /* Pods_Kebne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kebne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		512434A52164DE1400313840 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		518513E8215AC652000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
 		518513E9215AC653000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		518513ED215AC6FB000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -75,10 +79,12 @@
 		518A29EE2158D3D700E02A5F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		518A29F02158D4AC00E02A5F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		518A29F22158E45A00E02A5F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		518A29F42158E47300E02A5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		518A29F42158E47300E02A5F /* KebneUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebneUser.swift; sourceTree = "<group>"; };
 		51E74A6321590A820037153D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		51E74A65215A5F3A0037153D /* LocationMonitorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMonitorService.swift; sourceTree = "<group>"; };
+		70A27FD71463EF4D3D3904F5 /* Pods-KebneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KebneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests.release.xcconfig"; sourceTree = "<group>"; };
 		9C891FB7F4182A6B059FFEC1 /* Pods-Kebne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kebne.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kebne/Pods-Kebne.release.xcconfig"; sourceTree = "<group>"; };
+		C84211A46379B7A6F46B7797 /* Pods-KebneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KebneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70873D6F55D10EA247F0ACA1 /* libPods-Kebne.a in Frameworks */,
+				4981329675E031B19836D495 /* Pods_Kebne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A6BD9BF5301BB452AE70596 /* Pods_KebneTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,11 +150,12 @@
 				518513F8215E2CAD000B796D /* GoogleService-Info.plist */,
 				518A29F02158D4AC00E02A5F /* MainCoordinator.swift */,
 				518A29F22158E45A00E02A5F /* UserController.swift */,
-				518A29F42158E47300E02A5F /* User.swift */,
+				518A29F42158E47300E02A5F /* KebneUser.swift */,
 				51E74A6321590A820037153D /* Environment.swift */,
 				518513F2215CF812000B796D /* NotificationService.swift */,
 				51E74A65215A5F3A0037153D /* LocationMonitorService.swift */,
 				518513EE215AC6FB000B796D /* Localizable.strings */,
+				512434A52164DE1400313840 /* NetworkService.swift */,
 			);
 			path = Kebne;
 			sourceTree = "<group>";
@@ -176,7 +184,8 @@
 		9BCE4D07DA63291CA1895695 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */,
+				3F74FE0418B6C39D4F17CB27 /* Pods_Kebne.framework */,
+				1EFACDC2E145A53F1F4C6502 /* Pods_KebneTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -186,6 +195,8 @@
 			children = (
 				07998DEC3A00BF26E0518A6F /* Pods-Kebne.debug.xcconfig */,
 				9C891FB7F4182A6B059FFEC1 /* Pods-Kebne.release.xcconfig */,
+				C84211A46379B7A6F46B7797 /* Pods-KebneTests.debug.xcconfig */,
+				70A27FD71463EF4D3D3904F5 /* Pods-KebneTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -202,6 +213,7 @@
 				518A29BA2155148F00E02A5F /* Frameworks */,
 				518A29BB2155148F00E02A5F /* Resources */,
 				4B86CF2EF8E09516CE5FF0CA /* [CP] Copy Pods Resources */,
+				F7D1A61613CD79C3738BB3B5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,9 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 518A29E82155149100E02A5F /* Build configuration list for PBXNativeTarget "KebneTests" */;
 			buildPhases = (
+				510C5C690E978C29FCFCEE40 /* [CP] Check Pods Manifest.lock */,
 				518A29CD2155149100E02A5F /* Sources */,
 				518A29CE2155149100E02A5F /* Frameworks */,
 				518A29CF2155149100E02A5F /* Resources */,
+				EAE357118D7014A2917655AA /* [CP] Embed Pods Frameworks */,
+				6488315D175A34ED616D0827 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -335,19 +350,93 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Kebne/Pods-Kebne-resources.sh",
-				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kebne/Pods-Kebne-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		510C5C690E978C29FCFCEE40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KebneTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6488315D175A34ED616D0827 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAE357118D7014A2917655AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F0F3384884A358E3AFB5CA63 /* [CP] Check Pods Manifest.lock */ = {
@@ -372,6 +461,42 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F7D1A61613CD79C3738BB3B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Kebne/Pods-Kebne-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Base64/Base64.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JWT/JWT.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Base64.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kebne/Pods-Kebne-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -379,10 +504,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				512434A62164DE1500313840 /* NetworkService.swift in Sources */,
 				518A29F32158E45A00E02A5F /* UserController.swift in Sources */,
 				51E74A66215A5F3A0037153D /* LocationMonitorService.swift in Sources */,
 				518A29C32155148F00E02A5F /* MainViewController.swift in Sources */,
-				518A29F52158E47300E02A5F /* User.swift in Sources */,
+				518A29F52158E47300E02A5F /* KebneUser.swift in Sources */,
 				51E74A6421590A820037153D /* Environment.swift in Sources */,
 				518513F3215CF812000B796D /* NotificationService.swift in Sources */,
 				518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */,
@@ -622,6 +748,7 @@
 		};
 		518A29E92155149100E02A5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C84211A46379B7A6F46B7797 /* Pods-KebneTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -643,6 +770,7 @@
 		};
 		518A29EA2155149100E02A5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70A27FD71463EF4D3D3904F5 /* Pods-KebneTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

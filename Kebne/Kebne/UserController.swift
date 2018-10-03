@@ -16,9 +16,6 @@ protocol UserControllerDelegate : AnyObject {
     func didReceiveNotificationWith(title: String, body: String)
 }
 
-protocol KebneNotificationResponder {
-    func appDidReceiveRemoteNotification(withUserInfo userInfo: [AnyHashable: Any])
-}
 
 class UserController : NSObject {
     var locationMonitorService: LocationMonitorService
@@ -32,14 +29,14 @@ class UserController : NSObject {
         self.notificationService = notificationService
     }
     
-    var user: User? {
+    var user: KebneUser? {
         if let currentGoogleUser = GIDSignIn.sharedInstance()?.currentUser {
-            return User(name: currentGoogleUser.profile.givenName, email: currentGoogleUser.profile.email)
+            return KebneUser(name: currentGoogleUser.profile.givenName, email: currentGoogleUser.profile.email)
         }
         return nil
     }
     
-    func googleSetup() {
+    func setup() {
         UNUserNotificationCenter.current().delegate = self
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
@@ -61,11 +58,7 @@ class UserController : NSObject {
         GIDSignIn.sharedInstance()?.signOut()
     }
     
-    
-    
-}
-
-extension UserController : KebneNotificationResponder {
+    //MARK: Handle notifications
     func appDidReceiveRemoteNotification(withUserInfo userInfo: [AnyHashable: Any]) {
         do {
             print("Remote notification: \(userInfo)")
@@ -84,6 +77,7 @@ extension UserController : KebneNotificationResponder {
             print("Error handling notification user info: \(e)")
         }
     }
+    
 }
 
 extension UserController : OfficeRegionObserver {
@@ -91,8 +85,6 @@ extension UserController : OfficeRegionObserver {
         guard let user = user else {return}
         notificationService.regionBoundaryCrossedBy(user: user, didEnter: toEntered)
     }
-    
-    
 }
 
 extension UserController : UNUserNotificationCenterDelegate {
