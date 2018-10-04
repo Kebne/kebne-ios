@@ -46,7 +46,7 @@ class UserController : NSObject {
         }
         scopes.append(Constant.googleFirebaseScope)
         GIDSignIn.sharedInstance()?.scopes = scopes
-        notificationService.setup()
+        
         
     }
     
