@@ -18,16 +18,20 @@ extension String {
 }
 
 
+protocol FirebaseMessaging {
+    func subscribe(toTopic: String)
+}
 
-
-
+extension Messaging : FirebaseMessaging {}
 
 class NotificationService: NSObject {
     
     let networkService: NetworkServiceProtocol
+    let messaging: FirebaseMessaging
     
-    init(networkService: NetworkServiceProtocol) {
+    init(networkService: NetworkServiceProtocol, messaging: FirebaseMessaging) {
         self.networkService = networkService
+        self.messaging = messaging
     }
 
     //MARK: Auth and setup
@@ -54,9 +58,9 @@ class NotificationService: NSObject {
     
     func subscribeToFirebaseMessaging(user: KebneUser) {
         
-        Messaging.messaging().subscribe(toTopic: BoundaryCrossing.didEnterTopic)
-        Messaging.messaging().subscribe(toTopic: BoundaryCrossing.didExitTopic)
-        Messaging.messaging().subscribe(toTopic: user.email.emailWithoutIllegalCharacters)
+        messaging.subscribe(toTopic: BoundaryCrossing.didEnterTopic)
+        messaging.subscribe(toTopic: BoundaryCrossing.didExitTopic)
+        messaging.subscribe(toTopic: user.email.emailWithoutIllegalCharacters)
     }
     
     func setup() {
@@ -150,4 +154,5 @@ extension NotificationService : MessagingDelegate {
         print("Messaging did receive registration token: \(fcmToken)")
     }
 }
+
 

@@ -16,17 +16,35 @@ protocol UserControllerDelegate : AnyObject {
     func didReceiveNotificationWith(title: String, body: String)
 }
 
+protocol GoogleSignInHandler {
+    var clientID: String! {get set}
+    var scopes: [Any]! {get set}
+}
 
-class UserController : NSObject {
-    var locationMonitorService: LocationMonitorService
-    var notificationService: NotificationService
+@objc protocol FirebaseAppHandler {
+    var options: FirebaseOptions! {get}
+}
+
+
+extension GIDSignIn : GoogleSignInHandler {}
+extension FirebaseApp : FirebaseAppHandler {}
+
+class StateController : NSObject {
+    let locationMonitorService: LocationMonitorService
+    let notificationService: NotificationService
+    var googleSignInHandler: GoogleSignInHandler?
+    var firebaseApp: FirebaseAppHandler?
+    
     weak var delegate: UserControllerDelegate?
     enum Constant {
         static let googleFirebaseScope = "https://www.googleapis.com/auth/firebase.messaging"
     }
-    init(locationMonitorService: LocationMonitorService, notificationService: NotificationService) {
+    init(locationMonitorService: LocationMonitorService, notificationService: NotificationService,
+         googleSignInHandler: GoogleSignInHandler?, firebaseApp: FirebaseAppHandler?) {
         self.locationMonitorService = locationMonitorService
         self.notificationService = notificationService
+        self.googleSignInHandler = googleSignInHandler
+        self.firebaseApp = firebaseApp
     }
     
     var user: KebneUser? {
@@ -38,16 +56,16 @@ class UserController : NSObject {
     
     func setup() {
         UNUserNotificationCenter.current().delegate = self
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        guard let firebaseApp = firebaseApp else {return}
+        
+        googleSignInHandler?.clientID = firebaseApp.options.clientID
         
         var scopes = [Any]()
-        if let currentScopes = GIDSignIn.sharedInstance()?.scopes {
+        if let currentScopes = googleSignInHandler?.scopes {
             scopes.append(contentsOf: currentScopes)
         }
         scopes.append(Constant.googleFirebaseScope)
-        GIDSignIn.sharedInstance()?.scopes = scopes
-        
-        
+        googleSignInHandler?.scopes = scopes
     }
     
     func observeRegionBoundaryCrossing() {
@@ -80,14 +98,14 @@ class UserController : NSObject {
     
 }
 
-extension UserController : OfficeRegionObserver {
+extension StateController : OfficeRegionObserver {
     func regionStateDidChange(toEntered: Bool) {
         guard let user = user else {return}
         notificationService.regionBoundaryCrossedBy(user: user, didEnter: toEntered)
     }
 }
 
-extension UserController : UNUserNotificationCenterDelegate {
+extension StateController : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         guard let user = user else {
             completionHandler()

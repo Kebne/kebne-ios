@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4981329675E031B19836D495 /* Pods_Kebne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F74FE0418B6C39D4F17CB27 /* Pods_Kebne.framework */; };
 		512434A62164DE1500313840 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512434A52164DE1400313840 /* NetworkService.swift */; };
+		512434A82166663900313840 /* KebneNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512434A72166663900313840 /* KebneNotification.swift */; };
+		512434AA2166669200313840 /* BoundaryCrossing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512434A92166669200313840 /* BoundaryCrossing.swift */; };
+		512434B921675E7600313840 /* StateControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512434B821675E7600313840 /* StateControllerTests.swift */; };
 		518513EC215AC6FB000B796D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 518513EE215AC6FB000B796D /* Localizable.strings */; };
 		518513F0215B8E81000B796D /* LocationMonitorServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513EF215B8E81000B796D /* LocationMonitorServiceTests.swift */; };
 		518513F3215CF812000B796D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513F2215CF812000B796D /* NotificationService.swift */; };
@@ -24,7 +27,7 @@
 		518A29E12155149100E02A5F /* KebneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29E02155149100E02A5F /* KebneUITests.swift */; };
 		518A29EF2158D3D700E02A5F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29EE2158D3D700E02A5F /* SignInViewController.swift */; };
 		518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F02158D4AC00E02A5F /* MainCoordinator.swift */; };
-		518A29F32158E45A00E02A5F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F22158E45A00E02A5F /* UserController.swift */; };
+		518A29F32158E45A00E02A5F /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F22158E45A00E02A5F /* StateController.swift */; };
 		518A29F52158E47300E02A5F /* KebneUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F42158E47300E02A5F /* KebneUser.swift */; };
 		51E74A6421590A820037153D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E74A6321590A820037153D /* Environment.swift */; };
 		51E74A66215A5F3A0037153D /* LocationMonitorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E74A65215A5F3A0037153D /* LocationMonitorService.swift */; };
@@ -53,6 +56,9 @@
 		1EFACDC2E145A53F1F4C6502 /* Pods_KebneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KebneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F74FE0418B6C39D4F17CB27 /* Pods_Kebne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kebne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		512434A52164DE1400313840 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		512434A72166663900313840 /* KebneNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebneNotification.swift; sourceTree = "<group>"; };
+		512434A92166669200313840 /* BoundaryCrossing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundaryCrossing.swift; sourceTree = "<group>"; };
+		512434B821675E7600313840 /* StateControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateControllerTests.swift; sourceTree = "<group>"; };
 		518513E8215AC652000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
 		518513E9215AC653000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		518513ED215AC6FB000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -78,7 +84,7 @@
 		518A29E22155149100E02A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		518A29EE2158D3D700E02A5F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		518A29F02158D4AC00E02A5F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		518A29F22158E45A00E02A5F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		518A29F22158E45A00E02A5F /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		518A29F42158E47300E02A5F /* KebneUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebneUser.swift; sourceTree = "<group>"; };
 		51E74A6321590A820037153D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		51E74A65215A5F3A0037153D /* LocationMonitorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMonitorService.swift; sourceTree = "<group>"; };
@@ -114,6 +120,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		512434B121675DD000313840 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				512434A92166669200313840 /* BoundaryCrossing.swift */,
+				512434A72166663900313840 /* KebneNotification.swift */,
+				518513F2215CF812000B796D /* NotificationService.swift */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		512434B221675DE400313840 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				51E74A65215A5F3A0037153D /* LocationMonitorService.swift */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		512434B321675DF100313840 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				518A29F02158D4AC00E02A5F /* MainCoordinator.swift */,
+				518A29C22155148F00E02A5F /* MainViewController.swift */,
+				518A29EE2158D3D700E02A5F /* SignInViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		512434B421675DFC00313840 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				512434A52164DE1400313840 /* NetworkService.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		512434B521675E1100313840 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				518A29F22158E45A00E02A5F /* StateController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		512434B721675E2400313840 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				518A29F42158E47300E02A5F /* KebneUser.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		518A29B42155148F00E02A5F = {
 			isa = PBXGroup;
 			children = (
@@ -139,23 +197,21 @@
 		518A29BF2155148F00E02A5F /* Kebne */ = {
 			isa = PBXGroup;
 			children = (
+				512434B521675E1100313840 /* Controller */,
+				512434B421675DFC00313840 /* Networking */,
+				512434B721675E2400313840 /* User */,
+				512434B221675DE400313840 /* Location */,
+				512434B121675DD000313840 /* Notifications */,
+				512434B321675DF100313840 /* View */,
 				518513FA215E2CD1000B796D /* Kebne.entitlements */,
 				518A29C02155148F00E02A5F /* AppDelegate.swift */,
-				518A29C22155148F00E02A5F /* MainViewController.swift */,
-				518A29EE2158D3D700E02A5F /* SignInViewController.swift */,
 				518A29C42155148F00E02A5F /* Main.storyboard */,
 				518A29C72155149100E02A5F /* Assets.xcassets */,
 				518A29C92155149100E02A5F /* LaunchScreen.storyboard */,
 				518A29CC2155149100E02A5F /* Info.plist */,
 				518513F8215E2CAD000B796D /* GoogleService-Info.plist */,
-				518A29F02158D4AC00E02A5F /* MainCoordinator.swift */,
-				518A29F22158E45A00E02A5F /* UserController.swift */,
-				518A29F42158E47300E02A5F /* KebneUser.swift */,
 				51E74A6321590A820037153D /* Environment.swift */,
-				518513F2215CF812000B796D /* NotificationService.swift */,
-				51E74A65215A5F3A0037153D /* LocationMonitorService.swift */,
 				518513EE215AC6FB000B796D /* Localizable.strings */,
-				512434A52164DE1400313840 /* NetworkService.swift */,
 			);
 			path = Kebne;
 			sourceTree = "<group>";
@@ -168,6 +224,7 @@
 				518513F4215D00DD000B796D /* NotificationServiceTests.swift */,
 				518513EF215B8E81000B796D /* LocationMonitorServiceTests.swift */,
 				518513F6215E1AD1000B796D /* IntegrationTests.swift */,
+				512434B821675E7600313840 /* StateControllerTests.swift */,
 			);
 			path = KebneTests;
 			sourceTree = "<group>";
@@ -276,6 +333,9 @@
 					518A29BC2155148F00E02A5F = {
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -505,9 +565,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				512434A62164DE1500313840 /* NetworkService.swift in Sources */,
-				518A29F32158E45A00E02A5F /* UserController.swift in Sources */,
+				518A29F32158E45A00E02A5F /* StateController.swift in Sources */,
+				512434A82166663900313840 /* KebneNotification.swift in Sources */,
 				51E74A66215A5F3A0037153D /* LocationMonitorService.swift in Sources */,
 				518A29C32155148F00E02A5F /* MainViewController.swift in Sources */,
+				512434AA2166669200313840 /* BoundaryCrossing.swift in Sources */,
 				518A29F52158E47300E02A5F /* KebneUser.swift in Sources */,
 				51E74A6421590A820037153D /* Environment.swift in Sources */,
 				518513F3215CF812000B796D /* NotificationService.swift in Sources */,
@@ -523,6 +585,7 @@
 			files = (
 				518513F7215E1AD1000B796D /* IntegrationTests.swift in Sources */,
 				518513F5215D00DD000B796D /* NotificationServiceTests.swift in Sources */,
+				512434B921675E7600313840 /* StateControllerTests.swift in Sources */,
 				518A29D62155149100E02A5F /* KebneTests.swift in Sources */,
 				518513F0215B8E81000B796D /* LocationMonitorServiceTests.swift in Sources */,
 			);

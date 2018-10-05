@@ -53,6 +53,10 @@
 	<string>Appen använder platsinfo för att se när du är i närheten av Kebnes kontor.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Appen använder platsinfo för att se när du är i närheten av Kebnes kontor.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

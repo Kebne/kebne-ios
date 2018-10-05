@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
         static let greetingMsg = NSLocalizedString("mainView.titleLabel.greeting", comment: "")
     }
     
-    var userController: UserController!
+    var userController: StateController!
     weak var delegate: MainViewControllerDelegate?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var signOutButton: UIButton!

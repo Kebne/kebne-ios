@@ -12,7 +12,7 @@ import Firebase
 
 class IntegrationTests: XCTestCase {
 
-    var userController: UserController!
+    var userController: StateController!
     var mockLocationManager: MockLocationManager!
     var mockNotificationService: MockNotificationService!
     var fakeLocationMonitorService: MockLocationMonitorService!
@@ -22,8 +22,9 @@ class IntegrationTests: XCTestCase {
         super.setUp()
         mockLocationManager = MockLocationManager()
         fakeLocationMonitorService = MockLocationMonitorService(locationManager: mockLocationManager)
-        mockNotificationService = MockNotificationService(networkService: MockNetworkService())
-        userController = TestUserController(locationMonitorService: fakeLocationMonitorService, notificationService: mockNotificationService)
+        mockNotificationService = MockNotificationService(networkService: MockNetworkService(), messaging: MockMessaging())
+        userController = TestUserController(locationMonitorService: fakeLocationMonitorService, notificationService: mockNotificationService,
+                                            googleSignInHandler: MockGoogleSignIn(), firebaseApp: MockFirebaseApp())
         userController.observeRegionBoundaryCrossing()
         userControllerDelegate = Coordinator()
         userController.delegate = userControllerDelegate
@@ -110,7 +111,7 @@ class IntegrationTests: XCTestCase {
 
 }
 
-class TestUserController : UserController {
+class TestUserController : StateController {
     
     override var user: KebneUser? {
         return KebneUser(name: "testUser", email: "testEmail")

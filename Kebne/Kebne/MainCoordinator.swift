@@ -81,10 +81,10 @@ protocol Coordinator {
 class MainCoordinator : NSObject, Coordinator {
 
     var rootViewController: UINavigationController
-    var userController: UserController
+    var userController: StateController
     var viewControllerFactory: ViewControllerFactory
     
-    init(rootViewController: UINavigationController, userController: UserController, viewControllerFactory: ViewControllerFactory) {
+    init(rootViewController: UINavigationController, userController: StateController, viewControllerFactory: ViewControllerFactory) {
         self.rootViewController = rootViewController
         self.userController = userController
         self.viewControllerFactory = viewControllerFactory

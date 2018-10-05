@@ -19,15 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var mainCoordinator: MainCoordinator!
-    var userController: UserController!
+    var userController: StateController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        let firebaseApp = FirebaseApp.app()
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
-        userController = UserController(locationMonitorService: LocationMonitorService(locationManager: CLLocationManager()), notificationService: NotificationService(networkService: NetworkService()))
+        let googleSignIn = GIDSignIn.sharedInstance()
+        let notificationService = NotificationService(networkService: NetworkService(), messaging: Messaging.messaging())
+        userController = StateController(locationMonitorService: LocationMonitorService(locationManager: CLLocationManager()),
+                                        notificationService: notificationService, googleSignInHandler: googleSignIn,
+                                        firebaseApp: firebaseApp)
         userController.setup()
+        notificationService.setup()
         userController.observeRegionBoundaryCrossing()
   
         mainCoordinator = MainCoordinator(rootViewController: navigationController, userController: userController, viewControllerFactory: ViewControllerFactoryClass(storyboard: UIStoryboard.main))
