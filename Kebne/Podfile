@@ -1,4 +1,17 @@
 platform :ios, '11.0'
+use_frameworks!
+
 target "Kebne" do
   pod 'GoogleSignIn'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Auth'
+  pod 'JWT'
 end 
+
+target "KebneTests" do
+pod 'GoogleSignIn'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Auth'
+end

@@ -109,12 +109,21 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ly-8Y-97i">
+                                <rect key="frame" x="115" y="391" width="145" height="30"/>
+                                <state key="normal" title="SEND NOTIFICATION"/>
+                                <connections>
+                                    <action selector="didPressSendNotification" destination="3fu-tT-QZq" eventType="touchUpInside" id="5Co-o6-aza"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QyP-03-Gzn" firstAttribute="bottom" secondItem="kRo-Tv-saj" secondAttribute="bottom" constant="70" id="1Sm-ZP-qKg"/>
+                            <constraint firstItem="2ly-8Y-97i" firstAttribute="centerX" secondItem="BgQ-72-YWc" secondAttribute="centerX" id="7J2-Sh-BLU"/>
                             <constraint firstItem="TN1-lL-sSy" firstAttribute="trailing" secondItem="QyP-03-Gzn" secondAttribute="trailing" id="7hJ-ss-PpO"/>
                             <constraint firstItem="kRo-Tv-saj" firstAttribute="centerX" secondItem="BgQ-72-YWc" secondAttribute="centerX" id="7if-Vt-eEq"/>
+                            <constraint firstItem="2ly-8Y-97i" firstAttribute="centerY" secondItem="BgQ-72-YWc" secondAttribute="centerY" id="BGK-ED-cnL"/>
                             <constraint firstItem="v9w-sR-EYZ" firstAttribute="top" secondItem="dMm-e3-ZUt" secondAttribute="bottom" constant="40" id="C4w-Yo-blc"/>
                             <constraint firstItem="TN1-lL-sSy" firstAttribute="leading" secondItem="QyP-03-Gzn" secondAttribute="leading" id="FVr-sn-f2P"/>
                             <constraint firstItem="TN1-lL-sSy" firstAttribute="top" secondItem="BgQ-72-YWc" secondAttribute="top" id="HNP-jt-8hS"/>

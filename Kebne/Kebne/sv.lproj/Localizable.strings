@@ -8,7 +8,23 @@
 
 "alert.title.regionMonitoringUnavailable" = "Tyvärr...";
 "alert.message.regionMonitoringUnavailable" = "Appen kan inte övervaka georegions. Se till att appen alltid får använda platsinfo i telefonens inställningar.";
+"alert.title.userDeclinedNotifications" = "Notiser inte tillåtna";
+"alert.message.userDeclinedNotifications" = "Du kommer inte att få notiser om någon med appen kommer till eller lämnar kontoret. För att ändra, gå in i telefonens inställningar och tillåt appen att visa notiser.";
+"alert.placeholder.boundarycrossingnotification" = "Skriv här för att skicka en hälsning";
+"alert.okbuttontitle.boundarycrossingnotification" = "Skicka";
+"alert.cancelbuttontitle.boundarycrossingnotification" = "Skippa";
 "mainView.locationLabel.inOfficeMsg" = "Det ser ut som att du är på kontoret.";
 "mainView.locationLabel.notInOfficeMsg" = "Det ser ut som att du inte är på kontoret.";
 "mainView.titleLabel.greeting" = "Hej";
 
+//Notifications
+"notification.boundarycrossing.enter.body" = "%@ är på kontoret";
+"notification.boundarycrossing.enter.title" = "Kontorsuppdatering";
+"notification.boundarycrossing.exit.body" = "%@ har lämnat kontoret";
+"notification.boundarycrossing.exit.title" = "Kontorsuppdatering";
+"notification.greeting.title" = "Hälsning från %@";
+
+"localnotification.boundarycrossing.enter.body" = "Din kollegor blir notifierade att du är på kontoret.";
+"localnotification.boundarycrossing.enter.title" = "Välkommen, %@!";
+"localnotification.boundarycrossing.exit.body" = "Din kollegor blir notifierade att du har lämnat kontoret.";
+"localnotification.boundarycrossing.exit.title" = "Hejdå, %@!";

@@ -7,8 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4981329675E031B19836D495 /* Pods_Kebne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F74FE0418B6C39D4F17CB27 /* Pods_Kebne.framework */; };
+		512434A62164DE1500313840 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512434A52164DE1400313840 /* NetworkService.swift */; };
+		512434A82166663900313840 /* KebneNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512434A72166663900313840 /* KebneNotification.swift */; };
+		512434AA2166669200313840 /* BoundaryCrossing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512434A92166669200313840 /* BoundaryCrossing.swift */; };
+		512434B921675E7600313840 /* StateControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512434B821675E7600313840 /* StateControllerTests.swift */; };
 		518513EC215AC6FB000B796D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 518513EE215AC6FB000B796D /* Localizable.strings */; };
 		518513F0215B8E81000B796D /* LocationMonitorServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513EF215B8E81000B796D /* LocationMonitorServiceTests.swift */; };
+		518513F3215CF812000B796D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513F2215CF812000B796D /* NotificationService.swift */; };
+		518513F5215D00DD000B796D /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513F4215D00DD000B796D /* NotificationServiceTests.swift */; };
+		518513F7215E1AD1000B796D /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518513F6215E1AD1000B796D /* IntegrationTests.swift */; };
+		518513F9215E2CAD000B796D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 518513F8215E2CAD000B796D /* GoogleService-Info.plist */; };
 		518A29C12155148F00E02A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C02155148F00E02A5F /* AppDelegate.swift */; };
 		518A29C32155148F00E02A5F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29C22155148F00E02A5F /* MainViewController.swift */; };
 		518A29C62155148F00E02A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518A29C42155148F00E02A5F /* Main.storyboard */; };
@@ -18,11 +27,11 @@
 		518A29E12155149100E02A5F /* KebneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29E02155149100E02A5F /* KebneUITests.swift */; };
 		518A29EF2158D3D700E02A5F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29EE2158D3D700E02A5F /* SignInViewController.swift */; };
 		518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F02158D4AC00E02A5F /* MainCoordinator.swift */; };
-		518A29F32158E45A00E02A5F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F22158E45A00E02A5F /* UserController.swift */; };
-		518A29F52158E47300E02A5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F42158E47300E02A5F /* User.swift */; };
+		518A29F32158E45A00E02A5F /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F22158E45A00E02A5F /* StateController.swift */; };
+		518A29F52158E47300E02A5F /* KebneUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A29F42158E47300E02A5F /* KebneUser.swift */; };
 		51E74A6421590A820037153D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E74A6321590A820037153D /* Environment.swift */; };
 		51E74A66215A5F3A0037153D /* LocationMonitorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E74A65215A5F3A0037153D /* LocationMonitorService.swift */; };
-		70873D6F55D10EA247F0ACA1 /* libPods-Kebne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */; };
+		8A6BD9BF5301BB452AE70596 /* Pods_KebneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFACDC2E145A53F1F4C6502 /* Pods_KebneTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,12 +53,22 @@
 
 /* Begin PBXFileReference section */
 		07998DEC3A00BF26E0518A6F /* Pods-Kebne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kebne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kebne/Pods-Kebne.debug.xcconfig"; sourceTree = "<group>"; };
-		1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kebne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EFACDC2E145A53F1F4C6502 /* Pods_KebneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KebneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F74FE0418B6C39D4F17CB27 /* Pods_Kebne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kebne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		512434A52164DE1400313840 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		512434A72166663900313840 /* KebneNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebneNotification.swift; sourceTree = "<group>"; };
+		512434A92166669200313840 /* BoundaryCrossing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundaryCrossing.swift; sourceTree = "<group>"; };
+		512434B821675E7600313840 /* StateControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateControllerTests.swift; sourceTree = "<group>"; };
 		518513E8215AC652000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
 		518513E9215AC653000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		518513ED215AC6FB000B796D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		518513EF215B8E81000B796D /* LocationMonitorServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMonitorServiceTests.swift; sourceTree = "<group>"; };
 		518513F1215BC7BE000B796D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		518513F2215CF812000B796D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		518513F4215D00DD000B796D /* NotificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceTests.swift; sourceTree = "<group>"; };
+		518513F6215E1AD1000B796D /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		518513F8215E2CAD000B796D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		518513FA215E2CD1000B796D /* Kebne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kebne.entitlements; sourceTree = "<group>"; };
 		518A29BD2155148F00E02A5F /* Kebne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kebne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518A29C02155148F00E02A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518A29C22155148F00E02A5F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -65,11 +84,13 @@
 		518A29E22155149100E02A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		518A29EE2158D3D700E02A5F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		518A29F02158D4AC00E02A5F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		518A29F22158E45A00E02A5F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		518A29F42158E47300E02A5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		518A29F22158E45A00E02A5F /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
+		518A29F42158E47300E02A5F /* KebneUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebneUser.swift; sourceTree = "<group>"; };
 		51E74A6321590A820037153D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		51E74A65215A5F3A0037153D /* LocationMonitorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMonitorService.swift; sourceTree = "<group>"; };
+		70A27FD71463EF4D3D3904F5 /* Pods-KebneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KebneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests.release.xcconfig"; sourceTree = "<group>"; };
 		9C891FB7F4182A6B059FFEC1 /* Pods-Kebne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kebne.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kebne/Pods-Kebne.release.xcconfig"; sourceTree = "<group>"; };
+		C84211A46379B7A6F46B7797 /* Pods-KebneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KebneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70873D6F55D10EA247F0ACA1 /* libPods-Kebne.a in Frameworks */,
+				4981329675E031B19836D495 /* Pods_Kebne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A6BD9BF5301BB452AE70596 /* Pods_KebneTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +120,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		512434B121675DD000313840 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				512434A92166669200313840 /* BoundaryCrossing.swift */,
+				512434A72166663900313840 /* KebneNotification.swift */,
+				518513F2215CF812000B796D /* NotificationService.swift */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		512434B221675DE400313840 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				51E74A65215A5F3A0037153D /* LocationMonitorService.swift */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		512434B321675DF100313840 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				518A29F02158D4AC00E02A5F /* MainCoordinator.swift */,
+				518A29C22155148F00E02A5F /* MainViewController.swift */,
+				518A29EE2158D3D700E02A5F /* SignInViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		512434B421675DFC00313840 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				512434A52164DE1400313840 /* NetworkService.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		512434B521675E1100313840 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				518A29F22158E45A00E02A5F /* StateController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		512434B721675E2400313840 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				518A29F42158E47300E02A5F /* KebneUser.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		518A29B42155148F00E02A5F = {
 			isa = PBXGroup;
 			children = (
@@ -123,18 +197,20 @@
 		518A29BF2155148F00E02A5F /* Kebne */ = {
 			isa = PBXGroup;
 			children = (
+				512434B521675E1100313840 /* Controller */,
+				512434B421675DFC00313840 /* Networking */,
+				512434B721675E2400313840 /* User */,
+				512434B221675DE400313840 /* Location */,
+				512434B121675DD000313840 /* Notifications */,
+				512434B321675DF100313840 /* View */,
+				518513FA215E2CD1000B796D /* Kebne.entitlements */,
 				518A29C02155148F00E02A5F /* AppDelegate.swift */,
-				518A29C22155148F00E02A5F /* MainViewController.swift */,
-				518A29EE2158D3D700E02A5F /* SignInViewController.swift */,
 				518A29C42155148F00E02A5F /* Main.storyboard */,
 				518A29C72155149100E02A5F /* Assets.xcassets */,
 				518A29C92155149100E02A5F /* LaunchScreen.storyboard */,
 				518A29CC2155149100E02A5F /* Info.plist */,
-				518A29F02158D4AC00E02A5F /* MainCoordinator.swift */,
-				518A29F22158E45A00E02A5F /* UserController.swift */,
-				518A29F42158E47300E02A5F /* User.swift */,
+				518513F8215E2CAD000B796D /* GoogleService-Info.plist */,
 				51E74A6321590A820037153D /* Environment.swift */,
-				51E74A65215A5F3A0037153D /* LocationMonitorService.swift */,
 				518513EE215AC6FB000B796D /* Localizable.strings */,
 			);
 			path = Kebne;
@@ -145,7 +221,10 @@
 			children = (
 				518A29D52155149100E02A5F /* KebneTests.swift */,
 				518A29D72155149100E02A5F /* Info.plist */,
+				518513F4215D00DD000B796D /* NotificationServiceTests.swift */,
 				518513EF215B8E81000B796D /* LocationMonitorServiceTests.swift */,
+				518513F6215E1AD1000B796D /* IntegrationTests.swift */,
+				512434B821675E7600313840 /* StateControllerTests.swift */,
 			);
 			path = KebneTests;
 			sourceTree = "<group>";
@@ -162,7 +241,8 @@
 		9BCE4D07DA63291CA1895695 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1B2E1337C0D67F8BA89E018E /* libPods-Kebne.a */,
+				3F74FE0418B6C39D4F17CB27 /* Pods_Kebne.framework */,
+				1EFACDC2E145A53F1F4C6502 /* Pods_KebneTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -172,6 +252,8 @@
 			children = (
 				07998DEC3A00BF26E0518A6F /* Pods-Kebne.debug.xcconfig */,
 				9C891FB7F4182A6B059FFEC1 /* Pods-Kebne.release.xcconfig */,
+				C84211A46379B7A6F46B7797 /* Pods-KebneTests.debug.xcconfig */,
+				70A27FD71463EF4D3D3904F5 /* Pods-KebneTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -188,6 +270,7 @@
 				518A29BA2155148F00E02A5F /* Frameworks */,
 				518A29BB2155148F00E02A5F /* Resources */,
 				4B86CF2EF8E09516CE5FF0CA /* [CP] Copy Pods Resources */,
+				F7D1A61613CD79C3738BB3B5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,9 +285,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 518A29E82155149100E02A5F /* Build configuration list for PBXNativeTarget "KebneTests" */;
 			buildPhases = (
+				510C5C690E978C29FCFCEE40 /* [CP] Check Pods Manifest.lock */,
 				518A29CD2155149100E02A5F /* Sources */,
 				518A29CE2155149100E02A5F /* Frameworks */,
 				518A29CF2155149100E02A5F /* Resources */,
+				EAE357118D7014A2917655AA /* [CP] Embed Pods Frameworks */,
+				6488315D175A34ED616D0827 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -246,6 +332,14 @@
 				TargetAttributes = {
 					518A29BC2155148F00E02A5F = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					518A29D02155149100E02A5F = {
 						CreatedOnToolsVersion = 10.0;
@@ -284,6 +378,7 @@
 			files = (
 				518A29CB2155149100E02A5F /* LaunchScreen.storyboard in Resources */,
 				518513EC215AC6FB000B796D /* Localizable.strings in Resources */,
+				518513F9215E2CAD000B796D /* GoogleService-Info.plist in Resources */,
 				518A29C82155149100E02A5F /* Assets.xcassets in Resources */,
 				518A29C62155148F00E02A5F /* Main.storyboard in Resources */,
 			);
@@ -315,19 +410,93 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Kebne/Pods-Kebne-resources.sh",
-				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kebne/Pods-Kebne-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		510C5C690E978C29FCFCEE40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KebneTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6488315D175A34ED616D0827 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAE357118D7014A2917655AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KebneTests/Pods-KebneTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F0F3384884A358E3AFB5CA63 /* [CP] Check Pods Manifest.lock */ = {
@@ -352,6 +521,42 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F7D1A61613CD79C3738BB3B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Kebne/Pods-Kebne-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Base64/Base64.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JWT/JWT.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Base64.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kebne/Pods-Kebne-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -359,11 +564,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				518A29F32158E45A00E02A5F /* UserController.swift in Sources */,
+				512434A62164DE1500313840 /* NetworkService.swift in Sources */,
+				518A29F32158E45A00E02A5F /* StateController.swift in Sources */,
+				512434A82166663900313840 /* KebneNotification.swift in Sources */,
 				51E74A66215A5F3A0037153D /* LocationMonitorService.swift in Sources */,
 				518A29C32155148F00E02A5F /* MainViewController.swift in Sources */,
-				518A29F52158E47300E02A5F /* User.swift in Sources */,
+				512434AA2166669200313840 /* BoundaryCrossing.swift in Sources */,
+				518A29F52158E47300E02A5F /* KebneUser.swift in Sources */,
 				51E74A6421590A820037153D /* Environment.swift in Sources */,
+				518513F3215CF812000B796D /* NotificationService.swift in Sources */,
 				518A29F12158D4AC00E02A5F /* MainCoordinator.swift in Sources */,
 				518A29C12155148F00E02A5F /* AppDelegate.swift in Sources */,
 				518A29EF2158D3D700E02A5F /* SignInViewController.swift in Sources */,
@@ -374,6 +583,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				518513F7215E1AD1000B796D /* IntegrationTests.swift in Sources */,
+				518513F5215D00DD000B796D /* NotificationServiceTests.swift in Sources */,
+				512434B921675E7600313840 /* StateControllerTests.swift in Sources */,
 				518A29D62155149100E02A5F /* KebneTests.swift in Sources */,
 				518513F0215B8E81000B796D /* LocationMonitorServiceTests.swift in Sources */,
 			);
@@ -556,6 +768,7 @@
 			baseConfigurationReference = 07998DEC3A00BF26E0518A6F /* Pods-Kebne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Kebne/Kebne.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2TLM57CUQ3;
@@ -578,6 +791,7 @@
 			baseConfigurationReference = 9C891FB7F4182A6B059FFEC1 /* Pods-Kebne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Kebne/Kebne.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2TLM57CUQ3;
@@ -597,6 +811,7 @@
 		};
 		518A29E92155149100E02A5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C84211A46379B7A6F46B7797 /* Pods-KebneTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -618,6 +833,7 @@
 		};
 		518A29EA2155149100E02A5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70A27FD71463EF4D3D3904F5 /* Pods-KebneTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

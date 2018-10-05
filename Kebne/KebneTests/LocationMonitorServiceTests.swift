@@ -32,7 +32,7 @@ class LocationMonitorServiceTests: XCTestCase {
         MockLocationManager.authStatus = .denied
         var canMonitor = true
         
-        sut.startmonitorForKebneOfficeRegion(callback: {(canMonitorRegions) in
+        sut.startMonitorForKebneOfficeRegion(callback: {(canMonitorRegions) in
             canMonitor = canMonitorRegions
         }, alocationManager: MockLocationManager.self)
 
@@ -43,7 +43,7 @@ class LocationMonitorServiceTests: XCTestCase {
         MockLocationManager.authStatus = .notDetermined
         mockLocationManager.didRequestAuthorization = false
         
-        sut.startmonitorForKebneOfficeRegion(callback: {(response) in })
+        sut.startMonitorForKebneOfficeRegion(callback: {(response) in }, alocationManager: MockLocationManager.self)
         
         XCTAssertTrue(mockLocationManager.didRequestAuthorization)
     }
@@ -53,7 +53,7 @@ class LocationMonitorServiceTests: XCTestCase {
         mockLocationManager.errorOnRegionMonitoring = true
         var successfullyMonitoring = true
 
-        sut.startmonitorForKebneOfficeRegion(callback: {(monitoringSuccess) in
+        sut.startMonitorForKebneOfficeRegion(callback: {(monitoringSuccess) in
             successfullyMonitoring = monitoringSuccess
    
         }, alocationManager: MockLocationManager.self)
@@ -67,7 +67,7 @@ class LocationMonitorServiceTests: XCTestCase {
         mockLocationManager.errorOnRegionMonitoring = false
         var successfullyMonitoring = false
      
-        sut.startmonitorForKebneOfficeRegion(callback: {(monitoringSuccess) in
+        sut.startMonitorForKebneOfficeRegion(callback: {(monitoringSuccess) in
             successfullyMonitoring = monitoringSuccess
 
         }, alocationManager: MockLocationManager.self)
@@ -81,7 +81,7 @@ class LocationMonitorServiceTests: XCTestCase {
         mockLocationManager.errorOnRegionMonitoring = false
         var startedMonitoring = false
         
-        sut.startmonitorForKebneOfficeRegion(callback: {(didStartMonitor) in
+        sut.startMonitorForKebneOfficeRegion(callback: {(didStartMonitor) in
             startedMonitoring = didStartMonitor
         }, alocationManager: MockLocationManager.self)
         
@@ -96,7 +96,7 @@ class LocationMonitorServiceTests: XCTestCase {
         mockLocationManager.errorOnRegionMonitoring = false
         var startedMonitoring = false
         
-        sut.startmonitorForKebneOfficeRegion(callback: {(didStartMonitor) in
+        sut.startMonitorForKebneOfficeRegion(callback: {(didStartMonitor) in
             startedMonitoring = didStartMonitor
         }, alocationManager: MockLocationManager.self)
         
@@ -112,7 +112,7 @@ class LocationMonitorServiceTests: XCTestCase {
         mockLocationManager.shouldSendInOfficeRegionCoordinates = true
         sut.registerRegion(observer: mockObserver)
         
-        sut.startmonitorForKebneOfficeRegion(callback: {(isMonitoring) in }, alocationManager: MockLocationManager.self)
+        sut.startMonitorForKebneOfficeRegion(callback: {(isMonitoring) in }, alocationManager: MockLocationManager.self)
         
         XCTAssertTrue(mockObserver.isInRegion)
     }
@@ -173,6 +173,13 @@ class MockLocationManager : LocationManager {
         
     }
     
+    func triggerDidEnterRegion(_ entered: Bool) {
+        if entered {
+            delegate?.locationManager!(locationManager, didEnterRegion: CLCircularRegion.kebneOfficeRegion)
+        } else {
+            delegate?.locationManager!(locationManager, didExitRegion: CLCircularRegion.kebneOfficeRegion)
+        }
+    }
     var monitoredRegions: Set<CLRegion> = Set<CLRegion>()
     
     var delegate: CLLocationManagerDelegate?

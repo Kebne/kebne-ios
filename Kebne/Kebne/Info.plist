@@ -36,11 +36,27 @@
 				<string>com.googleusercontent.apps.915623308892-tstgv5i5dt56tl9g4ajtud0tepqef2vl</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1025505675838-nrsurv0rlp0308bi9g7vl8nbrch0ad9i</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Appen använder platsinfo för att se när du är i närheten av Kebnes kontor.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Appen använder platsinfo för att se när du är i närheten av Kebnes kontor.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -55,10 +71,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Appen använder platsinfo för att se när du är i närheten av Kebnes kontor.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Appen använder platsinfo för att se när du är i närheten av Kebnes kontor.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

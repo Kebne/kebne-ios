@@ -8,11 +8,13 @@
 
 import UIKit
 import GoogleSignIn
+import Firebase
 
 protocol MainViewControllerDelegate : class {
     func didTapSignOut()
     func signInUser()
     func regionMonitoringNotAvailable()
+    func userDeclinedNotifications()
 }
 
 class MainViewController: UIViewController {
@@ -23,7 +25,7 @@ class MainViewController: UIViewController {
         static let greetingMsg = NSLocalizedString("mainView.titleLabel.greeting", comment: "")
     }
     
-    var userController: UserController!
+    var userController: StateController!
     weak var delegate: MainViewControllerDelegate?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var signOutButton: UIButton!
@@ -54,13 +56,13 @@ class MainViewController: UIViewController {
         super.viewDidAppear(true)
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.signInSilently()
-       
+   
     }
 
     //MARK: Action
     @IBAction func didTapSignOut(_ sender: Any) {
         userController.signOut()
-        userController.locationMonitorService.stopmonitorForKebneOfficeRegion()
+        userController.locationMonitorService.stopMonitorForKebneOfficeRegion()
         regionMonitorSwitch.isOn = false
         regionMonitorSwitch.isEnabled = false
         signOutButton.isEnabled = false
@@ -73,16 +75,34 @@ class MainViewController: UIViewController {
     
     @IBAction func monitorSwitchDidSwitch(_ sender: UISwitch) {
         if sender.isOn {
-            userController.locationMonitorService.startmonitorForKebneOfficeRegion(callback: {[weak self](startedMonitoring) in
+            userController.locationMonitorService.startMonitorForKebneOfficeRegion(callback: {[weak self](startedMonitoring) in
                 guard let self = self else {return}
-                if !startedMonitoring {
+                if startedMonitoring {
+                    self.requestAuthForNotifications()
+                } else {
                     self.regionMonitorSwitch.setOn(false, animated: true)
                     self.delegate?.regionMonitoringNotAvailable()
                 }
             })
         } else {
-            userController.locationMonitorService.stopmonitorForKebneOfficeRegion()
+            userController.locationMonitorService.stopMonitorForKebneOfficeRegion()
             updateLocationLabel()
+        }
+    }
+    
+    private func requestAuthForNotifications() {
+        guard let user = userController.user else {return}
+        userController.notificationService.requestAuthForNotifications(completion: {[weak self](granted) in
+            if !granted {
+                self?.delegate?.userDeclinedNotifications()
+            }
+        }, user: user)
+    }
+    
+    
+    @IBAction func didPressSendNotification() {
+        if let user = userController.user {
+            userController.notificationService.regionBoundaryCrossedBy(user: user, didEnter: true)
         }
     }
     
@@ -92,7 +112,7 @@ class MainViewController: UIViewController {
 
         if let user = userController.user {
             hide(views: hideableViews, isHidden: false)
-            updateLocationLabel()
+            locationLabel.text = ""
             regionMonitorSwitch.isEnabled = userController.locationMonitorService.canMonitorForRegions()
             regionMonitorSwitch.isOn = userController.locationMonitorService.isMonitoringForKebneOfficeRegion
             titleLabel.text = "\(Strings.greetingMsg), \(user.name)!"
@@ -116,10 +136,20 @@ class MainViewController: UIViewController {
 
 extension MainViewController : GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        guard user != nil else {
+            delegate?.didTapSignOut()
+            return
+        }
         if error == nil {
-            updateView()
-        } else {
-            delegate?.signInUser()
+            let credential = GoogleAuthProvider.credential(withIDToken: user.authentication.idToken,
+                                                           accessToken: user.authentication.accessToken)
+            
+            Auth.auth().signInAndRetrieveData(with: credential) {[weak self](authResult, error) in
+                guard authResult != nil, error == nil, let user = self?.userController.user else {return}
+                self?.userController.notificationService.subscribeToFirebaseMessaging(user: user)
+               self?.updateView()
+            }
+            
         }
     }
 }
